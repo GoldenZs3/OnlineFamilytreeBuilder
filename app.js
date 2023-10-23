@@ -1,14 +1,13 @@
-const http = require('http');
- 
-const hostname = '127.0.0.1';
-const port = 3000;
- 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
+const {readFile, readFileSync} = require('fs')
+const express = require('express');
+const app = express();
+app.get('/', (request, response)=> {
+  readFile('./home.html', 'utf8', (err, html) => {
+    if (err) {
+      response.status(500).send("error")
+    }
+    response.send(html);
+  })
 });
- 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+
+app.listen(process.env.PORT || 3000, () => console.log('App available on http://localhost:3000'))
