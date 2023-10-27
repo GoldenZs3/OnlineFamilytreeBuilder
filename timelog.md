@@ -97,4 +97,14 @@
 ## Week 6
 
 ### 23 Oct 2023
-* *2 hours* further setting up the starting webapp
+* *3 hours* further setting up the starting webapp
+* *0.5 hour* sending update about the project to superviser
+
+### 24 Oct 2023
+* *0.5 hour* meeting with superviser
+* *1.5 hour* trying to fix errors in the webapp
+* *0.5 hour* researching if it's worth doing my own visualization library
+
+### 27 Oct 2023
+* *2 hours* fixing all errors present in webapp
+

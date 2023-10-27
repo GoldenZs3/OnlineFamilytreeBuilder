@@ -1,5 +1,6 @@
 const {readFile, readFileSync} = require('fs')
 const express = require('express');
+const dtree = require('d3-dtree');
 const app = express();
 app.get('/', (request, response)=> {
   readFile('./home.html', 'utf8', (err, html) => {
@@ -9,5 +10,5 @@ app.get('/', (request, response)=> {
     response.send(html);
   })
 });
-
-app.listen(process.env.PORT || 3000, () => console.log('App available on http://localhost:3000'))
+app.use("/public", express.static('./public/'));
+app.listen(process.env.PORT || 8000, () => console.log('App available on http://localhost:8000'))
