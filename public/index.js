@@ -27,3 +27,6 @@ $.getJSON('public/data.json', function(treeData) {
         }
     });
 });
+$(function(){
+    $("#nav-placeholder").load("public/topnav.html");
+  });

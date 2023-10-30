@@ -21,6 +21,8 @@
   "dependencies": {
     "connect": "^3.7.0",
     "d3-dtree": "^2.4.1",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
