@@ -105,6 +105,18 @@
 * *1.5 hour* trying to fix errors in the webapp
 * *0.5 hour* researching if it's worth doing my own visualization library
 
+### 26 Oct 2023
+* *2 hours* create wireframes for the app
+
 ### 27 Oct 2023
 * *2 hours* fixing all errors present in webapp
+* *1.5 hours* adding material to the page
+
+## Week 7
+### 30 Oct 2023
+* *2.5 hours* Adding top navigation bar
+* *0.5 hour* updating supervisor about progress
+
+### 31 Oct 2023
+* *2 hours* Working on frontend
 

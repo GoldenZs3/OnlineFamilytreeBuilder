@@ -5,6 +5,22 @@
 <style type="text/css">
 	body {
 	    font: 10px sans-serif;
+		border: 0;
+		margin: 0;
+	}
+	.topnav a.active {
+  	background-color: white;
+  	color: green;
+	}
+	h1{
+		font-size: 3em;
+	}
+	path{
+		stroke-width: 2.5px;
+	}
+	#title{
+		display:flex;
+		justify-content: center;
 	}
 	.linage {
 	    fill: none;
@@ -20,14 +36,14 @@
 			border-radius: 50%;
 	}
 	.man {
-	    background-color: lightblue;
+	    background-color: lightgreen;
 			border-style: solid;
 			border-width: 1px;
 			box-sizing: border-box;
 		border-radius: 15px;
 	}
 	.woman {
-			background-color: pink;
+			background-color: lightgreen;
 			border-style: solid;
 			border-width: 1px;
 			box-sizing: border-box;
@@ -35,6 +51,12 @@
 	}
 	.emphasis{
 			font-style: italic;
+	}
+	.nodeText{
+		font-size: 13px;
+	}
+	.foreignObject{
+		height: 16px;
 	}
 	p {
 		padding:0;
@@ -55,9 +77,8 @@
 	<div id="nav-placeholder">
 
 	</div>
-		<h1>Demo</h1>
+	<div id="title"><h1>Online Familytree Builder</h1></div>
     <div id="graph"></div>
-    <a href="/page2"><p>Page 2</p></a>
 
     <script src='public/index.js'></script>
 </body>
