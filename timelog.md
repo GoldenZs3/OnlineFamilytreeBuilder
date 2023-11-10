@@ -120,3 +120,13 @@
 ### 31 Oct 2023
 * *2 hours* Working on frontend
 
+## Week 8
+### 6 Nov 2023
+* *4 hours* Working on backend setup
+
+### 9 Nov 2023
+* *3 hours* Working on script for user input
+
+## 10 Nov 2023
+* *3 hours* Creating user input form, updating tree with new child from user input
+
