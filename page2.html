@@ -9,6 +9,38 @@
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <div id="nav-placeholder"></div>
-    <h1>This is page 2!!</h1>
+    <h1>Form to input new relation</h1>
+    <div class="new_relation_form">
+		<form action="/page2" method="post" id="myForm">
+            <label for="parentName">Parent name:</label>
+            <input type="text" id="parentName" name="parentName"><br><br>
+            <label for="newName">New person name:</label>
+            <input type="text" id="newName" name="newName"><br><br>
+            <label for="class">Gender:</label>
+            <input type="text" id="class" name="class"><br><br>
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+    
+        <script>
+            document.getElementById('myForm').addEventListener('submit', function(e) {
+                e.preventDefault(); // Prevent the form from being submitted normally
+    
+                const inputParent = document.getElementById('parentName').value;
+                const inputName = document.getElementById('newName').value;
+                const inputClass = document.getElementById('class').value;
+    
+                fetch('/addRelation', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ parentName: inputParent, relation: {name: inputName, class: inputClass }}),
+                })
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch((error) => console.error('Error:', error));
+            });
+        </script>
     <script src='public/index.js'></script>
 </body>
