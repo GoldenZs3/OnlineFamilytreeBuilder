@@ -35,7 +35,7 @@
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ parentName: inputParent, relation: {name: inputName, class: inputClass }}),
+                    body: JSON.stringify({ relationName: inputParent, relation: {name: inputName, class: inputClass }}),
                 })
                 .then(response => response.json())
                 .then(data => console.log(data))

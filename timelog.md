@@ -128,5 +128,14 @@
 * *3 hours* Working on script for user input
 
 ## 10 Nov 2023
-* *3 hours* Creating user input form, updating tree with new child from user input
+* *4 hours* Creating user input form, updating tree with new child from user input
+
+## Week 8
+### 13 Nov 2023
+* *4 hours* Creating user input form for updating tree with new marriage and new oldest ancestor
+* *0.5 hour* Updating supervisor about updates made since last meeting
+
+### 14 Nov 2023
+* *0.5 hour* Meeting with supervisor
+* *2 hours* Fixing bugs that came up during demo for supervisor
 

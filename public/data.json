@@ -41,7 +41,21 @@
                                     },
                                     {
                                         "name": "Jasper",
-                                        "class": "man"
+                                        "class": "man",
+                                        "marriages": [
+                                            {
+                                                "spouse": {
+                                                    "name": "newMarriage",
+                                                    "class": "woman"
+                                                },
+                                                "children": [
+                                                    {
+                                                        "name": "new",
+                                                        "class": "woman"
+                                                    }
+                                                ]
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "Emma",
@@ -49,7 +63,16 @@
                                     },
                                     {
                                         "name": "Julia",
-                                        "class": "woman"
+                                        "class": "woman",
+                                        "marriages": [
+                                            {
+                                                "spouse": {
+                                                    "name": "newMarriage",
+                                                    "class": "woman"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
                                     }
                                 ]
                             }
