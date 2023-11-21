@@ -44,14 +44,15 @@
                                         "class": "man",
                                         "marriages": [
                                             {
-                                                "spouse": {
-                                                    "name": "newMarriage",
-                                                    "class": "woman"
-                                                },
+                                                "spouse": {},
                                                 "children": [
                                                     {
                                                         "name": "new",
                                                         "class": "woman"
+                                                    },
+                                                    {
+                                                        "name": "name",
+                                                        "class": "man"
                                                     }
                                                 ]
                                             }
@@ -59,7 +60,25 @@
                                     },
                                     {
                                         "name": "Emma",
-                                        "class": "woman"
+                                        "class": "woman",
+                                        "marriages": [
+                                            {
+                                                "spouse": {
+                                                    "name": "newSpouse",
+                                                    "class": "other"
+                                                },
+                                                "children": [
+                                                    {
+                                                        "name": "newChild",
+                                                        "class": "man"
+                                                    },
+                                                    {
+                                                        "name": "newDaughter",
+                                                        "class": "woman"
+                                                    }
+                                                ]
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "Julia",
@@ -67,10 +86,15 @@
                                         "marriages": [
                                             {
                                                 "spouse": {
-                                                    "name": "newMarriage",
-                                                    "class": "woman"
+                                                    "name": "marriage",
+                                                    "class": "man"
                                                 },
-                                                "children": []
+                                                "children": [
+                                                    {
+                                                        "name": "name",
+                                                        "class": "woman"
+                                                    }
+                                                ]
                                             }
                                         ]
                                     }

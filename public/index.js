@@ -1,3 +1,42 @@
+fetch('public/data.json')
+    .then(response => response.json())
+    .then(data => {
+        let familyTree = data;
+        function addNameToUndefinedNode(tree) {
+            if (tree.name === "undefined") {
+                // Add a class to the node
+                tree.name = "Unknown Person";
+            }
+        
+            // If the node has marriages, check the spouse and children
+            if (tree.marriages && tree.marriages.length > 0) {
+                for (let marriage of tree.marriages) {
+                    addNameToUndefinedNode(marriage.spouse);
+                    for (let child of marriage.children) {
+                        addNameToUndefinedNode(child);
+                    }
+                }
+            }
+        }
+        
+        // Call the function on your tree
+        addNameToUndefinedNode(familyTree);
+
+        fetch('/updateFamilyTree', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(familyTree),
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch((error) => console.error('Error:', error));
+        
+    })
+    .catch(error => console.error('Error:', error));
+
+
 $.getJSON('public/data.json', function(treeData) {
     dTree.init(treeData, {
         target: "#graph",
@@ -27,6 +66,8 @@ $.getJSON('public/data.json', function(treeData) {
         }
     });
 });
+
+
 $(function(){
     $("#nav-placeholder").load("public/topnav.html");
   });

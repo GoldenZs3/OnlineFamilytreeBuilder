@@ -130,7 +130,7 @@
 ## 10 Nov 2023
 * *4 hours* Creating user input form, updating tree with new child from user input
 
-## Week 8
+## Week 9
 ### 13 Nov 2023
 * *4 hours* Creating user input form for updating tree with new marriage and new oldest ancestor
 * *0.5 hour* Updating supervisor about updates made since last meeting
@@ -138,4 +138,16 @@
 ### 14 Nov 2023
 * *0.5 hour* Meeting with supervisor
 * *2 hours* Fixing bugs that came up during demo for supervisor
+
+### 15 Nov 2023
+* *2 hours* Finish fixing the bugs
+
+### 17 Nov 2023
+* *4 hours* Adding start new tree functionality
+
+## Week 10
+### 20 Nov 2023
+* *2 hours* Finish adding new tree for backend
+* *0.5 hour* Update supervisor about the progress made
+
 

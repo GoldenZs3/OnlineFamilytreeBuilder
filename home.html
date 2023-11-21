@@ -49,6 +49,20 @@
 			box-sizing: border-box;
 			border-radius: 15px;
 	}
+	.other{
+		background-color: lightgreen;
+			border-style: solid;
+			border-width: 1px;
+			box-sizing: border-box;
+			border-radius: 15px;
+	}
+	.node {
+		background-color: lightgreen;
+			border-style: solid;
+			border-width: 1px;
+			box-sizing: border-box;
+			border-radius: 15px;
+	}
 	.emphasis{
 			font-style: italic;
 	}
@@ -79,29 +93,7 @@
 	</div>
 	<div id="title"><h1>Online Familytree Builder</h1></div>
     <div id="graph"></div>
-	<button onclick="addRelation()">Add Relation</button>
 	<div><a href="/page2">Add relation from form</a></div>
-
-    <script>
-        function addRelation() {
-            const relation = {
-    parentName: 'James',
-    relation: {
-        name: 'New Child',
-        class: 'woman'
-    }
-};
-fetch('http://localhost:8000/addRelation', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(relation),
-})
-            .then(response => response.json())
-        	.catch((error) => console.error('Error:', error));
-		}
-    </script>
 
     <script src='public/index.js'></script>
 </body>

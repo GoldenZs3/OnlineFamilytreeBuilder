@@ -11,36 +11,83 @@
     <div id="nav-placeholder"></div>
     <h1>Form to input new relation</h1>
     <div class="new_relation_form">
-		<form action="/page2" method="post" id="myForm">
-            <label for="parentName">Parent name:</label>
+		<form action="/page2" method="post" id="relationForm">
+            <label> What type of relation are you adding?</label><br>
+            <input type="radio" id="child" name="action" value="child">
+             <label for="child">New child</label><br>
+            <input type="radio" id="partner" name="action" value="partner">
+            <label for="partner">New partner/spouse </label><br>
+            <input type="radio" id="oldest" name="action" value="oldest">
+            <label for="oldest">New oldest ancestor (furthest up the tree)</label><br>
+            <label for="parentName">Parent/Partner name (You can leave this empty for adding oldest ancestor):</label>
             <input type="text" id="parentName" name="parentName"><br><br>
             <label for="newName">New person name:</label>
             <input type="text" id="newName" name="newName"><br><br>
             <label for="class">Gender:</label>
-            <input type="text" id="class" name="class"><br><br>
+            <input type="radio" id="man" name="gender" value="man">
+             <label for="man">Man</label><br>
+            <input type="radio" id="woman" name="gender" value="woman">
+            <label for="woman">Woman </label><br>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other </label><br>
             <input type="submit" value="Submit">
           </form>
         </div>
+        <br>
+    <h1>Start a new tree</h1>
+    <div class="new_tree_form">
+        <form action="/addTree" method="post" id="newTreeForm" >
+            <label for="newTreeName">New person name:</label>
+            <input type="text" id="newTreeName" name="newTreeName"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
     
         <script>
-            document.getElementById('myForm').addEventListener('submit', function(e) {
+            document.getElementById('relationForm').addEventListener('submit', function(e) {
                 e.preventDefault(); // Prevent the form from being submitted normally
-    
+        
                 const inputParent = document.getElementById('parentName').value;
                 const inputName = document.getElementById('newName').value;
-                const inputClass = document.getElementById('class').value;
-    
+                const inputClass = document.querySelector('input[name="gender"]:checked').value;
+                const inputAction = document.querySelector('input[name="action"]:checked').value;
+        
                 fetch('/addRelation', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ relationName: inputParent, relation: {name: inputName, class: inputClass }}),
+                    body: JSON.stringify({ relationName: inputParent, relation: {name: inputName, class: inputClass }, action: inputAction }),
                 })
                 .then(response => response.json())
                 .then(data => console.log(data))
                 .catch((error) => console.error('Error:', error));
             });
         </script>
+        
     <script src='public/index.js'></script>
+    <script>
+        document.getElementById('newTreeForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent the form from being submitted normally
+
+    const inputName = document.getElementById('newTreeName').value;
+
+    // Check if the input field is empty
+    if (!inputName || inputName.trim() === '') {
+        alert('Please enter a name.');
+        return;
+    }
+
+    fetch("/addNewTree", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: inputName }),
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch((error) => console.error('Error:', error));
+});
+    </script>
 </body>
