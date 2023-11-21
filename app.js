@@ -23,7 +23,7 @@ app.get('/page2', (request, response)=> {
 });
 app.post('/updateFamilyTree', (req, res) => {
     const familyTree = req.body;
-    fs.writeFileSync('public/data.json', JSON.stringify(familyTree,"", 4));
+    fs.writeFileSync('public/data/data.json', JSON.stringify(familyTree,"", 4));
     res.send(JSON.stringify({ success: true, familyTree }));
   });
 app.post('/addRelation', (req, res) => {
@@ -102,7 +102,7 @@ function addNewRoot(tree){
 
 
 let familyTree;
-fs.readFile('public/data.json', 'utf8', (err, data) => {
+fs.readFile('public/data/data.json', 'utf8', (err, data) => {
   if (err) {
       console.error(`Error reading file from disk: ${err}`);
   } else {
@@ -112,7 +112,7 @@ fs.readFile('public/data.json', 'utf8', (err, data) => {
   console.log(action);
   if (action==="child"){
     if (findParentAndAddRelation(familyTree)) {
-      fs.writeFileSync('public/data.json', JSON.stringify(familyTree,"", 4));
+      fs.writeFileSync('public/data/data.json', JSON.stringify(familyTree,"", 4));
       res.send(JSON.stringify({ success: true, familyTree }));
     } else {
       res.status(400).send({ success: false, message: 'Parent not found' });
@@ -121,7 +121,7 @@ fs.readFile('public/data.json', 'utf8', (err, data) => {
   else if (action==="partner")
   {
   if (findPartnerAndAddRelation(familyTree)) {
-    fs.writeFileSync('public/data.json', JSON.stringify(familyTree,"", 4));
+    fs.writeFileSync('public/data/data.json', JSON.stringify(familyTree,"", 4));
     res.send(JSON.stringify({ success: true, familyTree }));
   } else {
     res.status(400).send({ success: false, message: 'Parent not found' });
@@ -130,7 +130,7 @@ fs.readFile('public/data.json', 'utf8', (err, data) => {
   {
     familyTree=addNewRoot(familyTree)
     if (addNewRoot(familyTree)) {
-      fs.writeFileSync('public/data.json', JSON.stringify(familyTree,"", 4));
+      fs.writeFileSync('public/data/data.json', JSON.stringify(familyTree,"", 4));
       res.send(JSON.stringify({ success: true, familyTree }));
     } else {
       res.status(400).send({ success: false, message: 'Parent not found' });
@@ -142,7 +142,7 @@ fs.readFile('public/data.json', 'utf8', (err, data) => {
 app.post('/addNewTree', (req,res) => {
   const relationName = req.body;
   console.log(relationName)
-  const filename = `public/${relationName.name}_data.json`;
+  const filename = `public/data/${relationName.name}_data.json`;
   fs.writeFile(filename, JSON.stringify([relationName], null, 4), (err) => {
     if (err) {
         console.error(`Error writing file to disk: ${err}`);
@@ -152,5 +152,24 @@ app.post('/addNewTree', (req,res) => {
     }
 });
 });
+
+app.get('/listOfTrees', (req, res) => {
+  fs.readdir('public/data', (err, files) => {
+      if (err) {
+          console.error(`Error reading directory: ${err}`);
+          res.status(500).send({ success: false, message: 'Server error' });
+      } else {
+          let trees = [];
+          files.forEach(file => {
+            console.log(file)
+              trees.push(file);
+          });
+          console.log(trees)
+          res.send(trees);
+      }
+  });
+});
+
+
 app.use("/public", express.static('./public/'));
 app.listen(process.env.PORT || 8000, () => console.log('App available on http://localhost:8000'))

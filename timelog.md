@@ -150,4 +150,6 @@
 * *2 hours* Finish adding new tree for backend
 * *0.5 hour* Update supervisor about the progress made
 
+### 21 Nov 2023
+* *2 hours* Adding new trees into the visualization
 

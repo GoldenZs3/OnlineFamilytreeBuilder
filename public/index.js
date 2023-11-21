@@ -1,4 +1,4 @@
-fetch('public/data.json')
+fetch('public/data/data.json')
     .then(response => response.json())
     .then(data => {
         let familyTree = data;
@@ -37,7 +37,7 @@ fetch('public/data.json')
     .catch(error => console.error('Error:', error));
 
 
-$.getJSON('public/data.json', function(treeData) {
+$.getJSON('public/data/data.json', function(treeData) {
     dTree.init(treeData, {
         target: "#graph",
         debug: true,
