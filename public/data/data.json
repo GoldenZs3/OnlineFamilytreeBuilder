@@ -53,6 +53,15 @@
                                                     {
                                                         "name": "name",
                                                         "class": "man"
+                                                    },
+                                                    {
+                                                        "name": "test",
+                                                        "class": "woman",
+                                                        "extra": {
+                                                            "dateOfBirth": "2020",
+                                                            "place": "City",
+                                                            "status": "alive"
+                                                        }
                                                     }
                                                 ]
                                             }

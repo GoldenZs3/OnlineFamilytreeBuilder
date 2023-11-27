@@ -53,8 +53,17 @@ $.getJSON('public/data/data.json', function(treeData) {
                 alert('Right-click: ' + name);
             },
             textRenderer: function(name, extra, textClass) {
-                if (extra && extra.nickname)
-                    name = name + " (" + extra.nickname + ")";
+                if (extra){
+                    if(extra.dateOfBirth){
+                        name = name + "<br>"+extra.dateOfBirth;
+                    }
+                    if(extra.place){
+                        name = name + "<br>"+extra.place;
+                    }
+                    if(extra.status){
+                        name = name + "<br>"+extra.status;
+                    }
+                }
                 return "<p align='center' class='" + textClass + "'>" + name + "</p>";
             },
             marriageClick: function(extra, id) {

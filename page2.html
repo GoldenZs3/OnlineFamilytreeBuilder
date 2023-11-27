@@ -5,6 +5,9 @@
 		border: 0;
 		margin: 0;
 	}
+    #nav-placeholder{
+		padding-bottom: 50px;
+	}
 </style>
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -12,6 +15,10 @@
     <h1>Form to input new relation</h1>
     <div class="new_relation_form">
 		<form action="/page2" method="post" id="relationForm">
+            <label for="jsonFile">Select a JSON file:</label>
+        <select id="jsonFile" name="jsonFile">
+            <!-- Options will be added here by JavaScript -->
+        </select><br><br>
             <label> What type of relation are you adding?</label><br>
             <input type="radio" id="child" name="action" value="child">
              <label for="child">New child</label><br>
@@ -23,6 +30,10 @@
             <input type="text" id="parentName" name="parentName"><br><br>
             <label for="newName">New person name:</label>
             <input type="text" id="newName" name="newName"><br><br>
+            <label for="dateOfBirth">New person's date of birth:</label>
+            <input type="text" id="dateOfBirth" name="dateOfBirth"><br><br>
+            <label for="place">New person's place of birth/associated country, city or town:</label>
+            <input type="text" id="place" name="place"><br><br>
             <label for="class">Gender:</label>
             <input type="radio" id="man" name="gender" value="man">
              <label for="man">Man</label><br>
@@ -30,6 +41,11 @@
             <label for="woman">Woman </label><br>
             <input type="radio" id="other" name="gender" value="other">
             <label for="other">Other </label><br>
+            <label for="status">Status:</label>
+            <input type="radio" id="alive" name="status" value="alive">
+             <label for="alive">Alive</label><br>
+            <input type="radio" id="deceased" name="status" value="deceased">
+            <label for="deceased">Deceased </label><br>
             <input type="submit" value="Submit">
           </form>
         </div>
@@ -39,16 +55,49 @@
         <form action="/addTree" method="post" id="newTreeForm" >
             <label for="newTreeName">New person name:</label>
             <input type="text" id="newTreeName" name="newTreeName"><br><br>
+            <label for="newTreedateOfBirth">New person's date of birth:</label>
+            <input type="text" id="newTreedateOfBirth" name="newTreedateOfBirth"><br><br>
+            <label for="newTreeplace">New person's place of birth/associated country, city or town:</label>
+            <input type="text" id="newTreeplace" name="newTreeplace"><br><br>
+            <label for="newTreeclass">Gender:</label>
+            <input type="radio" id="man" name="newTreegender" value="man">
+             <label for="man">Man</label><br>
+            <input type="radio" id="woman" name="newTreegender" value="woman">
+            <label for="woman">Woman </label><br>
+            <input type="radio" id="other" name="newTreegender" value="other">
+            <label for="other">Other </label><br>
+            <label for="newTreestatus">Status:</label>
+            <input type="radio" id="alive" name="newTreestatus" value="alive">
+             <label for="alive">Alive</label><br>
+            <input type="radio" id="deceased" name="newTreestatus" value="deceased">
+            <label for="deceased">Deceased </label><br>
             <input type="submit" value="Submit">
         </form>
     </div>
     
         <script>
+            fetch('/listOfTrees')
+    .then(response => response.json())
+    .then(files => {
+        const select = document.getElementById('jsonFile');
+        files.forEach(file => {
+            const option = document.createElement('option');
+            option.value = file;
+            option.text = file;
+            select.appendChild(option);
+        });
+    })
+    .catch(error => console.error('Error:', error));
+
             document.getElementById('relationForm').addEventListener('submit', function(e) {
                 e.preventDefault(); // Prevent the form from being submitted normally
-        
+
+                const inputFile = document.getElementById('jsonFile').value;
                 const inputParent = document.getElementById('parentName').value;
                 const inputName = document.getElementById('newName').value;
+                const inputDate = document.getElementById('dateOfBirth').value;
+                const inputPlace = document.getElementById('place').value;
+                const inputStatus = document.querySelector('input[name="status"]:checked').value;
                 const inputClass = document.querySelector('input[name="gender"]:checked').value;
                 const inputAction = document.querySelector('input[name="action"]:checked').value;
         
@@ -57,7 +106,7 @@
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ relationName: inputParent, relation: {name: inputName, class: inputClass }, action: inputAction }),
+                    body: JSON.stringify({ file:inputFile, relationName: inputParent, relation: {name: inputName, class: inputClass, extra: {dateOfBirth: inputDate, place: inputPlace, status: inputStatus} }, action: inputAction }),
                 })
                 .then(response => response.json())
                 .then(data => console.log(data))
@@ -71,19 +120,17 @@
     e.preventDefault(); // Prevent the form from being submitted normally
 
     const inputName = document.getElementById('newTreeName').value;
-
-    // Check if the input field is empty
-    if (!inputName || inputName.trim() === '') {
-        alert('Please enter a name.');
-        return;
-    }
+    const inputDate = document.getElementById('newTreedateOfBirth').value;
+    const inputPlace = document.getElementById('newTreeplace').value;
+    const inputStatus = document.querySelector('input[name="newTreestatus"]:checked').value;
+    const inputClass = document.querySelector('input[name="newTreegender"]:checked').value;
 
     fetch("/addNewTree", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name: inputName }),
+        body: JSON.stringify({ name: inputName, class: inputClass, extra: {dateOfBirth: inputDate, place: inputPlace, status: inputStatus} }),
     })
     .then(response => response.json())
     .then(data => console.log(data))

@@ -27,7 +27,7 @@ app.post('/updateFamilyTree', (req, res) => {
     res.send(JSON.stringify({ success: true, familyTree }));
   });
 app.post('/addRelation', (req, res) => {
-  const { relationName, relation, action } = req.body;
+  const { file, relationName, relation, action } = req.body;
 
   // Function to recursively search for the parent in the family tree
   function findParentAndAddRelation(tree) {
@@ -102,7 +102,7 @@ function addNewRoot(tree){
 
 
 let familyTree;
-fs.readFile('public/data/data.json', 'utf8', (err, data) => {
+fs.readFile(`public/data/${file}`, 'utf8', (err, data) => {
   if (err) {
       console.error(`Error reading file from disk: ${err}`);
   } else {
@@ -112,7 +112,7 @@ fs.readFile('public/data/data.json', 'utf8', (err, data) => {
   console.log(action);
   if (action==="child"){
     if (findParentAndAddRelation(familyTree)) {
-      fs.writeFileSync('public/data/data.json', JSON.stringify(familyTree,"", 4));
+      fs.writeFileSync(`public/data/${file}`, JSON.stringify(familyTree,"", 4));
       res.send(JSON.stringify({ success: true, familyTree }));
     } else {
       res.status(400).send({ success: false, message: 'Parent not found' });
@@ -121,7 +121,7 @@ fs.readFile('public/data/data.json', 'utf8', (err, data) => {
   else if (action==="partner")
   {
   if (findPartnerAndAddRelation(familyTree)) {
-    fs.writeFileSync('public/data/data.json', JSON.stringify(familyTree,"", 4));
+    fs.writeFileSync(`public/data/${file}`, JSON.stringify(familyTree,"", 4));
     res.send(JSON.stringify({ success: true, familyTree }));
   } else {
     res.status(400).send({ success: false, message: 'Parent not found' });
@@ -130,7 +130,7 @@ fs.readFile('public/data/data.json', 'utf8', (err, data) => {
   {
     familyTree=addNewRoot(familyTree)
     if (addNewRoot(familyTree)) {
-      fs.writeFileSync('public/data/data.json', JSON.stringify(familyTree,"", 4));
+      fs.writeFileSync(`public/data/${file}`, JSON.stringify(familyTree,"", 4));
       res.send(JSON.stringify({ success: true, familyTree }));
     } else {
       res.status(400).send({ success: false, message: 'Parent not found' });

@@ -153,3 +153,10 @@
 ### 21 Nov 2023
 * *2 hours* Adding new trees into the visualization
 
+### 24 Nov 2023
+* *3 hours* adding extra info into the tree
+* *1 hour* adding the extra info into the visualization
+
+## Week 11
+* *1 hour* continue work on the extra info in the visualization
+

@@ -1,5 +1,16 @@
 [
     {
-        "name": "name"
+        "name": "name",
+        "marriages": [
+            {
+                "spouse": {},
+                "children": [
+                    {
+                        "name": "newChild",
+                        "class": "woman"
+                    }
+                ]
+            }
+        ]
     }
 ]

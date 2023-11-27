@@ -82,6 +82,9 @@
 	#treesContainer div{
 		height: 200px;
 	}
+	#nav-placeholder{
+		padding-bottom: 50px;
+	}
 </style>
 
 
@@ -111,7 +114,7 @@
                             treesContainer.appendChild(treeContainer);
 							treeContainer.setAttribute("id", "graph")
                             dTree.init(treeData, {
-        target: "#graph",
+								target: "#graph",
         debug: true,
         hideMarriageNodes: true,
         marriageNodeSize: 5,
@@ -125,8 +128,17 @@
                 alert('Right-click: ' + name);
             },
             textRenderer: function(name, extra, textClass) {
-                if (extra && extra.nickname)
-                    name = name + " (" + extra.nickname + ")";
+                if (extra){
+                    if(extra.dateOfBirth){
+                        name = name + "<br>"+extra.dateOfBirth;
+                    }
+                    if(extra.place){
+                        name = name + "<br>"+extra.place;
+                    }
+                    if(extra.status){
+                        name = name + "<br>"+extra.status;
+                    }
+                }
                 return "<p align='center' class='" + textClass + "'>" + name + "</p>";
             },
             marriageClick: function(extra, id) {
