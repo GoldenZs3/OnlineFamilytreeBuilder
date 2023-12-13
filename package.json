@@ -17,12 +17,15 @@
   "bugs": {
     "url": "https://github.com/GoldenZs3/OnlineFamilytreeBuilder/issues"
   },
-  "homepage": "https://github.com/GoldenZs3/OnlineFamilytreeBuilder#readme",
+  "homepage": "https://goldenzs3.github.io/OnlineFamilytreeBuilder/",
   "dependencies": {
     "connect": "^3.7.0",
     "d3-dtree": "^2.4.1",
     "express": "^4.18.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.0"
   }
 }
