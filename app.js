@@ -21,6 +21,14 @@ app.get('/page2', (request, response)=> {
     response.send(html);
   })
 });
+app.get('/trees', (request, response) =>{
+  readFile('./trees.html', 'utf8', (err, html) => {
+    if (err) {
+      response.status(500).send("error")
+    }
+    response.send(html);
+  })
+});
 app.post('/updateFamilyTree', (req, res) => {
     const familyTree = req.body;
     fs.writeFileSync('public/data/data.json', JSON.stringify(familyTree,"", 4));

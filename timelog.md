@@ -158,5 +158,25 @@
 * *1 hour* adding the extra info into the visualization
 
 ## Week 11
-* *1 hour* continue work on the extra info in the visualization
+
+### 27 Nov 2023
+* *2 hours* continue work on the extra info in the visualization
+
+## Week 12
+
+### 4 Dec 2023
+* *2 hours* updating Figma and MoSCoW
+
+## Week 13
+
+### 11 Dec 2023:
+* *2 hours* gathering information to put inot the midpoint report
+* *3 hours* creating new page for the trees to go into, adding content to home page and adding some css
+
+### 12 Dec 2023:
+* *2 hours* adding click node open a window with information of the node
+* *2 hours* furhter front end work
+
+### 13 Dec 2023:
+* *1 hour* more front end for the new window
 

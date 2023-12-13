@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <style>
     body {
-	    font: 10px sans-serif;
+	    font: 15px sans-serif;
 		border: 0;
 		margin: 0;
 	}
     #nav-placeholder{
 		padding-bottom: 50px;
 	}
+    form{
+        margin: 20px;
+    }
+    input[type="text"]{
+        width: 35%;
+        height:25px;
+        border-radius: 5px;
+        border-color: green;
+    }
 </style>
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -15,9 +24,8 @@
     <h1>Form to input new relation</h1>
     <div class="new_relation_form">
 		<form action="/page2" method="post" id="relationForm">
-            <label for="jsonFile">Select a JSON file:</label>
+            <label for="jsonFile">Select a JSON file:</label> <br>
         <select id="jsonFile" name="jsonFile">
-            <!-- Options will be added here by JavaScript -->
         </select><br><br>
             <label> What type of relation are you adding?</label><br>
             <input type="radio" id="child" name="action" value="child">
@@ -25,27 +33,27 @@
             <input type="radio" id="partner" name="action" value="partner">
             <label for="partner">New partner/spouse </label><br>
             <input type="radio" id="oldest" name="action" value="oldest">
-            <label for="oldest">New oldest ancestor (furthest up the tree)</label><br>
-            <label for="parentName">Parent/Partner name (You can leave this empty for adding oldest ancestor):</label>
+            <label for="oldest">New oldest ancestor (furthest up the tree)</label><br><br>
+            <label for="parentName">Parent/Partner name (You can leave this empty for adding oldest ancestor):</label><br>
             <input type="text" id="parentName" name="parentName"><br><br>
-            <label for="newName">New person name:</label>
+            <label for="newName">New person name:</label><br>
             <input type="text" id="newName" name="newName"><br><br>
-            <label for="dateOfBirth">New person's date of birth:</label>
+            <label for="dateOfBirth">New person's date of birth:</label><br>
             <input type="text" id="dateOfBirth" name="dateOfBirth"><br><br>
-            <label for="place">New person's place of birth/associated country, city or town:</label>
+            <label for="place">New person's place of birth/associated country, city or town:</label><br>
             <input type="text" id="place" name="place"><br><br>
-            <label for="class">Gender:</label>
+            <label for="class">Gender:</label><br>
             <input type="radio" id="man" name="gender" value="man">
              <label for="man">Man</label><br>
             <input type="radio" id="woman" name="gender" value="woman">
             <label for="woman">Woman </label><br>
             <input type="radio" id="other" name="gender" value="other">
-            <label for="other">Other </label><br>
-            <label for="status">Status:</label>
+            <label for="other">Other </label><br><br>
+            <label for="status">Status:</label><br>
             <input type="radio" id="alive" name="status" value="alive">
              <label for="alive">Alive</label><br>
             <input type="radio" id="deceased" name="status" value="deceased">
-            <label for="deceased">Deceased </label><br>
+            <label for="deceased">Deceased </label><br><br>
             <input type="submit" value="Submit">
           </form>
         </div>
@@ -53,20 +61,20 @@
     <h1>Start a new tree</h1>
     <div class="new_tree_form">
         <form action="/addTree" method="post" id="newTreeForm" >
-            <label for="newTreeName">New person name:</label>
+            <label for="newTreeName">New person name:</label><br>
             <input type="text" id="newTreeName" name="newTreeName"><br><br>
-            <label for="newTreedateOfBirth">New person's date of birth:</label>
+            <label for="newTreedateOfBirth">New person's date of birth:</label><br>
             <input type="text" id="newTreedateOfBirth" name="newTreedateOfBirth"><br><br>
-            <label for="newTreeplace">New person's place of birth/associated country, city or town:</label>
+            <label for="newTreeplace">New person's place of birth/associated country, city or town:</label><br>
             <input type="text" id="newTreeplace" name="newTreeplace"><br><br>
-            <label for="newTreeclass">Gender:</label>
+            <label for="newTreeclass">Gender:</label><br>
             <input type="radio" id="man" name="newTreegender" value="man">
              <label for="man">Man</label><br>
             <input type="radio" id="woman" name="newTreegender" value="woman">
             <label for="woman">Woman </label><br>
             <input type="radio" id="other" name="newTreegender" value="other">
             <label for="other">Other </label><br>
-            <label for="newTreestatus">Status:</label>
+            <label for="newTreestatus">Status:</label><br>
             <input type="radio" id="alive" name="newTreestatus" value="alive">
              <label for="alive">Alive</label><br>
             <input type="radio" id="deceased" name="newTreestatus" value="deceased">
