@@ -7,7 +7,18 @@
                     "name": "newMarriage",
                     "class": "woman"
                 },
-                "children": []
+                "children": [
+                    {
+                        "name": "newChild",
+                        "class": "man",
+                        "extra": {
+                            "dateOfBirth": "",
+                            "place": "",
+                            "status": "alive",
+                            "profPic": "no_pic"
+                        }
+                    }
+                ]
             }
         ]
     }

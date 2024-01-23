@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<style type="text/css">
+	body {
+	    font: 10px sans-serif;
+		border: 0;
+		margin: 0;
+	}
+	.topnav a.active {
+  	background-color: white;
+  	color: green;
+	}
+	h1{
+		font-size: 3em;
+	}
+	path{
+		stroke-width: 2.5px;
+	}
+	#title{
+		display:flex;
+		justify-content: center;
+	}
+	.linage {
+	    fill: none;
+	    stroke: #000;
+		height: 200px;
+	}
+	.marriage {
+	    fill: none;
+	    stroke: black;
+	}
+	.marriageNode {
+			background-color: black;
+			border-radius: 50%;
+	}
+	.man {
+	    background-color: lightgreen;
+			border-style: solid;
+			border-width: 1px;
+			box-sizing: border-box;
+		border-radius: 15px;
+	}
+	.woman {
+			background-color: lightgreen;
+			border-style: solid;
+			border-width: 1px;
+			box-sizing: border-box;
+			border-radius: 15px;
+	}
+	.other{
+		background-color: lightgreen;
+			border-style: solid;
+			border-width: 1px;
+			box-sizing: border-box;
+			border-radius: 15px;
+	}
+	.node {
+		background-color: lightgreen;
+			border-style: solid;
+			border-width: 1px;
+			box-sizing: border-box;
+			border-radius: 15px;
+	}
+	.emphasis{
+			font-style: italic;
+	}
+	.nodeText{
+		font-size: 13px;
+	}
+	.foreignObject{
+		height: 16px;
+	}
+	p {
+		padding:0;
+		margin:0;
+	}
+	#graph{
+		height: 200px;
+	}
+	#treesContainer div{
+		height: 200px;
+	}
+	#nav-placeholder{
+		padding-bottom: 50px;
+	}
+	svg{
+		height: 350px;
+		width: 100%;
+	}
+	#warning{
+		color: red;
+	}
+    form{
+        margin: 20px;
+    }
+    input[type="text"]{
+        width: 35%;
+        height:25px;
+        border-radius: 5px;
+        border-color: green;
+    }
+    </style>
+    <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-dtree@2.4.1/dist/dTree.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<body>
+    <div id="nav-placeholder"></div>
+	<div id="title"><h1>Tree Page</h1></div>
+    <div id="tree"></div>
+    <h1>Form to input new relation</h1>
+    <div class="new_relation_form">
+		<form action="/page2" method="post" id="relationForm">
+            <label> What type of relation are you adding?</label><br>
+            <input type="radio" id="child" name="action" value="child">
+             <label for="child">New child</label><br>
+            <input type="radio" id="partner" name="action" value="partner">
+            <label for="partner">New partner/spouse </label><br>
+            <input type="radio" id="oldest" name="action" value="oldest">
+            <label for="oldest">New oldest ancestor (furthest up the tree)</label><br>
+            <input type="radio" id="delete" name="action" value="delete"></label>
+            <label for="delete">Delete a member</label><br><br>
+            <label for="parentName">Parent/Partner name (You can leave this empty for adding oldest ancestor):</label><br>
+            <input type="text" id="parentName" name="parentName"><br><br>
+            <label for="newName">New person name:</label><br>
+            <input type="text" id="newName" name="newName"><br><br>
+            <label for="dateOfBirth">New person's date of birth:</label><br>
+            <input type="text" id="dateOfBirth" name="dateOfBirth"><br><br>
+            <label for="place">New person's place of birth/associated country, city or town:</label><br>
+            <input type="text" id="place" name="place"><br><br>
+            <label for="class">Gender:</label><br>
+            <input type="radio" id="man" name="gender" value="man">
+             <label for="man">Man</label><br>
+            <input type="radio" id="woman" name="gender" value="woman">
+            <label for="woman">Woman </label><br>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other </label><br><br>
+            <label for="status">Status:</label><br>
+            <input type="radio" id="alive" name="status" value="alive">
+             <label for="alive">Alive</label><br>
+            <input type="radio" id="deceased" name="status" value="deceased">
+            <label for="deceased">Deceased </label><br><br>
+            <label for="profilePicture">Profile Picture:</label><br>
+            <input type="file" id="profilePicture" name="profilePicture"><br><br>
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+        <br>
+
+    <script src='public/index.js'></script>
+    <script>
+        // Retrieve the tree data from the server-side
+        const treeData = /* Tree data placeholder */;
+
+        // Initialize dTree with the specific tree data
+        dTree.init(treeData, {
+                            target: "#tree",
+                            debug: true,
+                            hideMarriageNodes: true,
+                            marriageNodeSize: 5,
+                            height: 800,
+                            width: 1200,
+                            callbacks: {
+                                nodeClick: function (name, extra) {
+                                    alert('Click: ' + name);
+                                },
+            nodeRightClick: function(name, extra) {
+                alert('Right-click: ' + name);
+            },
+            textRenderer: function(name, extra, textClass) {
+                if (extra){
+                    if(extra.dateOfBirth){
+                        name = name + "<br>"+extra.dateOfBirth;
+                    }
+                    if(extra.place){
+                        name = name + "<br>"+extra.place;
+                    }
+                    if(extra.status){
+                        name = name + "<br>"+extra.status;
+                    }
+                }
+                return "<p align='center' class='" + textClass + "'>" + name + "</p>";
+            },
+            marriageClick: function(extra, id) {
+                alert('Clicked marriage node' + id);
+            },
+            marriageRightClick: function(extra, id) {
+                alert('Right-clicked marriage node' + id);
+            },
+        }
+    });
+    </script>
+     <script>
+document.getElementById('relationForm').addEventListener('submit', function(e) {
+e.preventDefault(); // Prevent the form from being submitted normally
+
+const inputFile = /* Tree data json placeholder */;
+const inputParent = document.getElementById('parentName').value;
+const inputName = document.getElementById('newName').value;
+const inputDate = document.getElementById('dateOfBirth').value;
+const inputPlace = document.getElementById('place').value;
+const inputStatus = document.querySelector('input[name="status"]:checked') ? document.querySelector('input[name="status"]:checked').value : '';
+const inputClass = document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : '';
+const inputAction = document.querySelector('input[name="action"]:checked') ? document.querySelector('input[name="action"]:checked').value : '';
+const profilePicture = document.getElementById('profilePicture').files[0] ? document.getElementById('profilePicture').files[0]: 'no_pic'; // Get the uploaded file
+
+// Create a new FormData instance
+let formData = new FormData();
+
+// Append all the form data
+formData.append('file', inputFile);
+formData.append('relationName', inputParent);
+formData.append('relation', JSON.stringify({name: inputName, class: inputClass, extra: {dateOfBirth: inputDate, place: inputPlace, status: inputStatus}}));
+formData.append('action', inputAction);
+formData.append('profilePicture', profilePicture); // Append the file
+
+console.log(formData.values());
+fetch('/addRelation', {
+    method: 'POST',
+    body: formData,
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch((error) => console.error('Error:', error));
+});
+
+    </script>
+</body>
+
+</html>

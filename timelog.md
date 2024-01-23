@@ -178,5 +178,49 @@
 * *2 hours* furhter front end work
 
 ### 13 Dec 2023:
-* *1 hour* more front end for the new window
+* *3.5 hours* more front end for the new window
 
+### 14 Dec 2023:
+* *3 hours* research into hosting options
+* *1.5 hours* trying out hosting that eventually did not work
+* *2 hours* setting up a hosting that finally works
+
+### 15 Dec 2023:
+* *4 hours* further work into the look of the website
+
+## Week 14
+
+### 19 Dec 2023:
+* *4 hours* more aesthetic work towards the overall look
+
+## Week 15
+
+### 30 Dec 2023:
+* *6 hours* adding full functionality to delete accidental additions
+
+## Week 16
+
+### 1 Jan 2024:
+* *2 hours* keep documentiaion up to date
+* *3 hours* start work towards profile pictures 
+
+## Week 18
+
+### 15 Jan 2024:
+* *1 hour* prep for meeting
+* *0.5 hour* meeting with supervisor
+
+### 18 Jan 2024:
+* *2 hours* fix bugs on form and set default profile picture
+* *2.5 hours* create tree page for each tree
+
+### 19 Jan 2024:
+* *1.5 hours* further work on individual tree page
+
+## Week 17
+### 22 Jan 2024:
+* *1 hour* prep for meeting
+* *0.5 hour* meeting with advisor
+
+### 23 Jan 2024:
+* *3 hours* work towards private/public trees

@@ -1,0 +1,12 @@
+[
+    "private",
+    {
+        "name": "private",
+        "class": "man",
+        "extra": {
+            "dateOfBirth": "",
+            "place": "",
+            "status": "alive"
+        }
+    }
+]

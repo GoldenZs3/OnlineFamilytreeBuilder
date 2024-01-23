@@ -37,7 +37,8 @@
                                     },
                                     {
                                         "name": "Jane",
-                                        "class": "woman"
+                                        "class": "woman",
+                                        "marriages": []
                                     },
                                     {
                                         "name": "Jasper",
@@ -61,6 +62,26 @@
                                                             "dateOfBirth": "2020",
                                                             "place": "City",
                                                             "status": "alive"
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "test",
+                                                        "class": "man",
+                                                        "extra": {
+                                                            "dateOfBirth": "",
+                                                            "place": "",
+                                                            "status": "alive",
+                                                            "profPic": "b1ca7f3f5753dded274acc6f0fca22c1"
+                                                        }
+                                                    },
+                                                    {
+                                                        "name": "new",
+                                                        "class": "",
+                                                        "extra": {
+                                                            "dateOfBirth": "",
+                                                            "place": "",
+                                                            "status": "",
+                                                            "profPic": "no_pic"
                                                         }
                                                     }
                                                 ]

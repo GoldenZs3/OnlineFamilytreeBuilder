@@ -1,0 +1,11 @@
+[
+    {
+        "name": "public",
+        "class": "man",
+        "extra": {
+            "dateOfBirth": "2020",
+            "place": "City",
+            "status": "alive"
+        }
+    }
+]

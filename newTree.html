@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<style>
+    body {
+	    font: 15px sans-serif;
+		border: 0;
+		margin: 0;
+	}
+    #nav-placeholder{
+		padding-bottom: 50px;
+	}
+    form{
+        margin: 20px;
+    }
+    input[type="text"]{
+        width: 35%;
+        height:25px;
+        border-radius: 5px;
+        border-color: green;
+    }
+</style>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div id="nav-placeholder"></div>
+    <h1>Start a new tree</h1>
+    <div class="new_tree_form">
+        <form action="/addTree" method="post" id="newTreeForm" >
+            <label for="privacy">Would you like your tree to be visible for anyone, or be private?</label><br>
+            <input type="radio" id="public" name="privacy" value="public" onclick="hideInputs()">
+             <label for="public">Visible for anyone</label><br>
+             <input type="radio" id="private" name="privacy" value="private" onclick="showInputs()">
+             <label for="private">Private</label><br>
+             <div id="inputs" style="display:none;">
+                 <label for="privateTreeName">Give the tree a name (You will need this to access the tree): </label><br>
+                 <input type="text" id="privateTreeName" name="privateTreeName"><br><br>
+                 <label for="privateTreePass">Give the tree a passphrase (You will need this to access the tree):</label><br>
+                 <input type="text" id="privateTreePass" name="privateTreePass"><br><br>
+             </div>
+            <label for="newTreeName">New person name:</label><br>
+            <input type="text" id="newTreeName" name="newTreeName"><br><br>
+            <label for="newTreedateOfBirth">New person's date of birth:</label><br>
+            <input type="text" id="newTreedateOfBirth" name="newTreedateOfBirth"><br><br>
+            <label for="newTreeplace">New person's place of birth/associated country, city or town:</label><br>
+            <input type="text" id="newTreeplace" name="newTreeplace"><br><br>
+            <label for="class">Gender:</label><br>
+            <input type="radio" id="man" name="gender" value="man">
+             <label for="man">Man</label><br>
+            <input type="radio" id="woman" name="gender" value="woman">
+            <label for="woman">Woman </label><br>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other </label><br><br>
+            <label for="status">Status:</label><br>
+            <input type="radio" id="alive" name="status" value="alive">
+             <label for="alive">Alive</label><br>
+            <input type="radio" id="deceased" name="status" value="deceased">
+            <label for="deceased">Deceased </label><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <script>
+        function showInputs() {
+            var inputs = document.getElementById("inputs");
+            if (document.getElementById("private").checked) {
+                inputs.style.display = "block";
+            } else {
+                inputs.style.display = "none";
+            }
+        }
+        function hideInputs() {
+            var inputs = document.getElementById("inputs");
+            if (document.getElementById("public").checked) {
+                inputs.style.display = "none";
+            } else {
+                inputs.style.display = "block";
+            }
+        }
+    </script>
+    <script src='public/index.js'></script>
+    <script>
+        document.getElementById('newTreeForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent the form from being submitted normally
+
+    const inputPrivacy = document.querySelector('input[name="privacy"]:checked').value;
+    const inputPrivateName = document.getElementById('privateTreeName').value;
+    const inputPass = document.getElementById('privateTreePass').value;
+    const inputName = document.getElementById('newTreeName').value;
+    const inputDate = document.getElementById('newTreedateOfBirth').value;
+    const inputPlace = document.getElementById('newTreeplace').value;
+    const inputStatus = document.querySelector('input[name="status"]:checked') ? document.querySelector('input[name="status"]:checked').value : '';
+    const inputClass = document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : '';
+
+    fetch("/addNewTree", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({privacy: inputPrivacy, treeName: inputPrivateName, passphrase: inputPass, relation: {name: inputName, class: inputClass, extra: {dateOfBirth: inputDate, place: inputPlace, status: inputStatus} }}),
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch((error) => console.error('Error:', error));
+});
+    </script>
+</body>

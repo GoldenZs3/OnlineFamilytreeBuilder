@@ -4,12 +4,7 @@
         "marriages": [
             {
                 "spouse": {},
-                "children": [
-                    {
-                        "name": "newChild",
-                        "class": "woman"
-                    }
-                ]
+                "children": []
             }
         ]
     }

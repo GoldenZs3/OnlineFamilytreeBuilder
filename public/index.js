@@ -39,7 +39,7 @@ fetch('public/data/data.json')
 
     $.getJSON('public/data/data.json', function(treeData) {
         dTree.init(treeData, {
-            target: "#graph",
+            target: "#graph_home",
             debug: true,
             hideMarriageNodes: true,
             marriageNodeSize: 5,
@@ -58,6 +58,9 @@ fetch('public/data/data.json')
                         }
                         if(extra.status){
                             nodeInfo += "<br><strong>Status:</strong> " + extra.status;
+                        }
+                        if(extra.profPic){
+                            nodeInfo += "<img src=public/uploads/"+ extra.profPic +" width = 200px>";
                         }
                     }
                     // Display the information in the 'infoContent' div
