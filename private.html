@@ -68,7 +68,7 @@ fetch("/accessTree", {
     headers: {
         'Content-Type': 'application/json',
     },
-    body: JSON.stringify({treeName: document.getElementById('privateTreePass').value, passphrase: document.getElementById('privateTreePass').value}),
+    body: JSON.stringify({treeName: document.getElementById('privateTreeName').value, passphrase: document.getElementById('privateTreePass').value}),
 })
 .then(response => response.json())
 .then(data => {
