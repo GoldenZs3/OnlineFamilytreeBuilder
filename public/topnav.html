@@ -1,41 +1,107 @@
 <!DOCTYPE html>
 <style type="text/css">
     .topnav {
-  background-color: green;
-  overflow: hidden;
-  border-bottom: 3px solid black;
-}
+        background-color: green;
+        overflow: hidden;
+        border-bottom: 3px solid black;
+    }
 
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-  border-right: 1px solid black;
-  display: inline;
-}
+    /* Style the links inside the navigation bar */
+    .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        border-right: 1px solid black;
+        display: inline;
+    }
 
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: lightgreen;
-  color: black;
-}
-.header{
-  position: fixed;
-  width: 100%;
-  height: 50px;
-}
+    /* Change the color of links on hover */
+    .topnav a:hover {
+        background-color: lightgreen;
+        color: black;
+    }
 
+    .header {
+        position: fixed;
+        width: 100%;
+        height: 50px;
+    }
+
+    /* Style the button */
+    #guideButton {
+        float: right;
+        background-color: green;
+        color: white;
+        border: none;
+        padding: 14px 16px;
+        font-size: 17px;
+        cursor: pointer;
+        border-left: 1px solid black;
+    }
+    #guideButton:hover {
+        background-color: lightgreen;
+        color: black;
+    }
+
+    /* Style the user guide div */
+    #userGuide {
+        position: fixed;
+        top: 60px; /* Adjust the top position based on your header height */
+        right: 0;
+        width: 300px;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 </style>
+
 <body>
   <header class="header">
-    <div class="topnav">
-        <a href="/">Home</a>
-        <a href="/trees">Trees</a>
-        <a href="/newTree">Start a new tree</a>
+      <div class="topnav">
+          <a href="/">Home</a>
+          <a href="/trees">Trees</a>
+          <a href="/newTree">Start a new tree</a>
+          <a href="/private">Access a private tree</a>
+          <!-- Add the button and the user guide div -->
+          <button id="guideButton" onclick="toggleUserGuide()">User Guide</button>
+          <div id="userGuide" style = "display:none">
+              <!-- Add your user guide content here -->
+              <p>
+                <h3>How to use:</h3><br><br>
+                <h4>The home page:</h4><br>
+                Here you can see an example of what a tree will look like.
+                <br><br>
+                <h4>Trees</h4><br>
+                This page shows you all available public trees. To inspect each more closely,
+                or to modify family members of a specific tree, click on one of the members of the required tree.
+                <br><br>
+                <h4>Start a new tree</h4>
+                Here you can start a new tree by creating your first member.
+                When you start a new tree, you can also specify if ypu want your tree to be public, ie. visible to anyone,
+                or private. If you choose private you will need to create a name and a passphrase to your tree. <b>Make sure you keep a record of this,
+                  as you will need it to access your tree!</b>
+                <h4>Access a private tree</h4>
+                If on the previous page you decided to make a private tree, it is on this page you can gain access to it.
+                Simply enter the tree name and passphrase you created for the tree and hit submit.
+              </p>
+          </div>
       </div>
-    </header>
+  </header>
+
+  <script>
+      // Function to toggle the display of the user guide
+      function toggleUserGuide() {
+          var userGuide = document.getElementById("userGuide");
+          if (userGuide.style.display=="none"){
+            userGuide.style.display="block";
+          }
+          else{
+            userGuide.style.display="none";
+          }
+      }
+  </script>
 </body>

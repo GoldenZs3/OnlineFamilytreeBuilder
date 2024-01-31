@@ -38,13 +38,12 @@ fetch('public/data/data.json')
 
 
     $.getJSON('public/data/data.json', function(treeData) {
-        dTree.init(treeData, {
+        tree= dTree.init(treeData, {
             target: "#graph_home",
             debug: true,
             hideMarriageNodes: true,
             marriageNodeSize: 5,
-            height: 800,
-            width: 1200,
+            width: 1000,
             callbacks: {
                 nodeClick: function(name, extra) {
                     // Create a string with the node information
@@ -93,6 +92,7 @@ fetch('public/data/data.json')
                 },
             }
         });
+        tree.zoomTo(0, 220, zoom = 1.75, duration = 0)
     });
     
 

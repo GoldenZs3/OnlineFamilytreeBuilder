@@ -1,0 +1,34 @@
+[
+    "private1",
+    {
+        "name": "old",
+        "class": "",
+        "textClass": "emphasis",
+        "marriages": [
+            {
+                "spouse": {},
+                "children": [
+                    {
+                        "name": "private",
+                        "class": "man",
+                        "extra": {
+                            "dateOfBirth": "",
+                            "place": "",
+                            "status": "alive"
+                        }
+                    },
+                    {
+                        "name": "new",
+                        "class": "",
+                        "extra": {
+                            "dateOfBirth": "",
+                            "place": "",
+                            "status": "",
+                            "profPic": "no_pic"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]

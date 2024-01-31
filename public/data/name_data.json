@@ -1,10 +1,31 @@
 [
     {
-        "name": "name",
+        "name": "old",
+        "class": "",
+        "textClass": "emphasis",
         "marriages": [
             {
                 "spouse": {},
-                "children": []
+                "children": [
+                    {
+                        "name": "name",
+                        "marriages": [
+                            {
+                                "spouse": {
+                                    "name": "new",
+                                    "class": "",
+                                    "extra": {
+                                        "dateOfBirth": "",
+                                        "place": "",
+                                        "status": "",
+                                        "profPic": "no_pic"
+                                    }
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }

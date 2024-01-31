@@ -224,3 +224,27 @@
 
 ### 23 Jan 2024:
 * *3 hours* work towards private/public trees
+
+### 24 Jan 2024:
+* *2.5 hour* start of work to match private tree name and password from user input
+
+### 25 Jan 2024:
+* *4 hour* Reformatting website, work towards individual private tree page
+
+### 26 Jan 2024:
+* *3.5 hours* Bug fixing, linking form to private page
+
+## Week 18
+
+### 29 Jan 2024:
+* *1 hour* prepping for meeting
+* *0.5 hour* meeting
+* *1 hour* reformatting page
+
+### 30 Jan 2024:
+* *2.5 hours* Reformatting tree sizes
+* *1.5 hours* Fixing bugs, adding success message and reloading
+* *1.5 hours* Playing around with success messages
+
+### 31 Jan 2024:
+* *1.5 hours* Playing around with front end

@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <style type="text/css">
 	body {
-	    font: 10px sans-serif;
+	    font: 15px sans-serif;
 		border: 0;
 		margin: 0;
 	}
@@ -21,6 +21,11 @@
 		display:flex;
 		justify-content: center;
 	}
+    #tree{
+        display:block;
+        justify-content: center;
+        height:400px;
+    }
 	.linage {
 	    fill: none;
 	    stroke: #000;
@@ -75,31 +80,70 @@
 		padding:0;
 		margin:0;
 	}
-	#graph{
-		height: 200px;
-	}
-	#treesContainer div{
-		height: 200px;
-	}
 	#nav-placeholder{
 		padding-bottom: 50px;
-	}
-	svg{
-		height: 350px;
-		width: 100%;
 	}
 	#warning{
 		color: red;
 	}
+    .new_relation_form{
+        display: flex;
+        justify-content: center;
+        width: 90%;
+    }
     form{
         margin: 20px;
+        width: 75%;
     }
     input[type="text"]{
-        width: 35%;
+        width: 100%;
         height:25px;
         border-radius: 5px;
         border-color: green;
     }
+    input[type="submit"]{
+        background-color: rgb(74, 158, 74);
+        border-radius: 5px;
+        font-size: 20px;
+        color: white;
+        border-width: 1px;
+        width: 100%;
+        height: 30px;
+    }
+    input[type="submit"]:hover{
+        background-color: lightgreen;
+        color: black;
+    }
+    #nodeInfo {
+    background-color: rgb(174, 243, 174);
+    border: 1px solid #ccc; /* Grey border */
+    width: 300px; /* Width of the div */
+    padding: 10px; /* Padding around the content */
+    top: 50px; /* Position from the top */
+    right: 50px; /* Position from the right */
+    z-index: 1000; /* Make sure it's on top of other elements */
+    display: none; /* Hide it by default */
+	border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#nodeInfo #closeButtonContainer {
+    text-align:right;
+	margin:0;
+}
+#nodeInfo #closeButton {
+    background-color: #4CAF50; /* Green background to match your theme */
+    color: white; /* White text */
+    border: none; /* No border */
+    cursor: pointer; /* Cursor style */
+}
+#nodeInfo img{
+    margin-left: 75px;
+    margin-top:0%;
+}
+#infoContent{
+    display:block;
+}
     </style>
     <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -111,7 +155,14 @@
     <div id="nav-placeholder"></div>
 	<div id="title"><h1>Tree Page</h1></div>
     <div id="tree"></div>
+    <div id="nodeInfo">
+		<div id="closeButtonContainer">
+		  <button id="closeButton">X</button>
+		</div>
+		<div id="infoContent"></div>
+	  </div>
     <h1>Form to input new relation</h1>
+    <div id="successMessage" style="display:none; justify-content: center; color: green; margin: 10px;">Tree updated successfully!</div>
     <div class="new_relation_form">
 		<form action="/page2" method="post" id="relationForm">
             <label> What type of relation are you adding?</label><br>
@@ -156,17 +207,36 @@
         const treeData = /* Tree data placeholder */;
 
         // Initialize dTree with the specific tree data
-        dTree.init(treeData, {
+        tree = dTree.init(treeData, {
                             target: "#tree",
                             debug: true,
-                            hideMarriageNodes: true,
-                            marriageNodeSize: 5,
-                            height: 800,
-                            width: 1200,
+            hideMarriageNodes: true,
+            marriageNodeSize: 5,
+            height: 265,
+            width: 1000,
                             callbacks: {
-                                nodeClick: function (name, extra) {
-                                    alert('Click: ' + name);
-                                },
+                                nodeClick: function(name, extra) {
+                    // Create a string with the node information
+                    var nodeInfo = "<strong>Name:</strong> " + name;
+                    if (extra) {
+                        if(extra.dateOfBirth){
+                            nodeInfo += "<br><strong>Date of Birth:</strong> " + extra.dateOfBirth;
+                        }
+                        if(extra.place){
+                            nodeInfo += "<br><strong>Place:</strong> " + extra.place;
+                        }
+                        if(extra.status){
+                            nodeInfo += "<br><strong>Status:</strong> " + extra.status;
+                        }
+                        if(extra.profPic){
+                            nodeInfo += "<img src=public/uploads/"+ extra.profPic +" width = 100px margin-left = 50px>";
+                        }
+                    }
+                    // Display the information in the 'infoContent' div
+                    document.getElementById('infoContent').innerHTML = nodeInfo;
+                    // Show the 'nodeInfo' div
+                    document.getElementById('nodeInfo').style.display = 'block';
+                },
             nodeRightClick: function(name, extra) {
                 alert('Right-click: ' + name);
             },
@@ -192,6 +262,7 @@
             },
         }
     });
+    tree.zoomTo(0, 200, zoom = 0.75, duration = 0);
     </script>
      <script>
 document.getElementById('relationForm').addEventListener('submit', function(e) {
@@ -205,7 +276,7 @@ const inputPlace = document.getElementById('place').value;
 const inputStatus = document.querySelector('input[name="status"]:checked') ? document.querySelector('input[name="status"]:checked').value : '';
 const inputClass = document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : '';
 const inputAction = document.querySelector('input[name="action"]:checked') ? document.querySelector('input[name="action"]:checked').value : '';
-const profilePicture = document.getElementById('profilePicture').files[0] ? document.getElementById('profilePicture').files[0]: 'no_pic'; // Get the uploaded file
+const profilePicture = document.getElementById('profilePicture').files[0]; // Get the uploaded file
 
 // Create a new FormData instance
 let formData = new FormData();
@@ -215,7 +286,9 @@ formData.append('file', inputFile);
 formData.append('relationName', inputParent);
 formData.append('relation', JSON.stringify({name: inputName, class: inputClass, extra: {dateOfBirth: inputDate, place: inputPlace, status: inputStatus}}));
 formData.append('action', inputAction);
-formData.append('profilePicture', profilePicture); // Append the file
+if (profilePicture) {
+    formData.append('profilePicture', profilePicture);
+}
 
 console.log(formData.values());
 fetch('/addRelation', {
@@ -223,7 +296,17 @@ fetch('/addRelation', {
     body: formData,
 })
 .then(response => response.json())
-.then(data => console.log(data))
+.then(data => {
+    console.log(data);
+    window.location.reload();
+    document.getElementById('successMessage').style.display = 'flex';
+                document.getElementById('newTreeForm').reset();
+
+                // Optionally, you can hide the success message after a few seconds
+                setTimeout(function() {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 3000);
+})
 .catch((error) => console.error('Error:', error));
 });
 

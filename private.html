@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<style type="text/css">
+	body {
+	    font: 15px sans-serif;
+		border: 0;
+		margin: 0;
+	}
+    #nav-placeholder{
+		padding-bottom: 50px;
+	}
+    #privateForm{
+        display: flex;
+        justify-content: center;
+        width: 90%;
+    }
+    form{
+        margin: 20px;
+        width: 75%;
+    }
+    input[type="text"]{
+        width: 100%;
+        height:25px;
+        border-radius: 5px;
+        border-color: green;
+    }
+    input[type="submit"]{
+        background-color: rgb(74, 158, 74);
+        border-radius: 5px;
+        font-size: 20px;
+        color: white;
+        border-width: 1px;
+        width: 100%;
+        height: 30px;
+    }
+    input[type="submit"]:hover{
+        background-color: lightgreen;
+        color: black;
+    }
+    
+</style>
+<script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-dtree@2.4.1/dist/dTree.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<body>
+    <div id="nav-placeholder"></div>
+<div id="title"><h1>Access a private tree</h1></div>
+<div id="privateForm">
+    <form id="accessTreeForm" >
+        <label for="privateTreeName">Provide your tree name: (You would have created this when starting your tree)</label><br>
+        <input type="text" id="privateTreeName" name="privateTreeName" required><br><br>
+        <label for="privateTreePass">Provide your passphrase for the tree:</label><br>
+        <input type="text" id="privateTreePass" name="privateTreePass" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+<script>
+    document.getElementById('accessTreeForm').addEventListener('submit', function(e) {
+e.preventDefault(); // Prevent the form from being submitted normally
+
+const inputPrivateName = document.getElementById('privateTreeName').value;
+const inputPass = document.getElementById('privateTreePass').value;
+
+fetch("/accessTree", {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({treeName: document.getElementById('privateTreePass').value, passphrase: document.getElementById('privateTreePass').value}),
+})
+.then(response => response.json())
+.then(data => {
+    console.log(data);
+    window.location.href = `/treePage?tree=${inputPrivateName}_data.json&folder=private`;
+})
+.catch((error) => console.error('Error:', error));
+});
+
+</script>
+<script src='public/index.js'></script>
+    
+</body>

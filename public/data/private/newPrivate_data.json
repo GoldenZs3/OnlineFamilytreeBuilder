@@ -1,0 +1,13 @@
+[
+    "newPrivate",
+    {
+        "name": "new",
+        "class": "",
+        "extra": {
+            "dateOfBirth": "",
+            "place": "",
+            "status": "",
+            "profPic": "no_pic"
+        }
+    }
+]

@@ -38,7 +38,12 @@
                                     {
                                         "name": "Jane",
                                         "class": "woman",
-                                        "marriages": []
+                                        "marriages": [
+                                            {
+                                                "spouse": {},
+                                                "children": []
+                                            }
+                                        ]
                                     },
                                     {
                                         "name": "Jasper",
@@ -54,15 +59,6 @@
                                                     {
                                                         "name": "name",
                                                         "class": "man"
-                                                    },
-                                                    {
-                                                        "name": "test",
-                                                        "class": "woman",
-                                                        "extra": {
-                                                            "dateOfBirth": "2020",
-                                                            "place": "City",
-                                                            "status": "alive"
-                                                        }
                                                     },
                                                     {
                                                         "name": "test",
@@ -100,7 +96,24 @@
                                                 "children": [
                                                     {
                                                         "name": "newChild",
-                                                        "class": "man"
+                                                        "class": "man",
+                                                        "marriages": [
+                                                            {
+                                                                "spouse": {},
+                                                                "children": [
+                                                                    {
+                                                                        "name": "name",
+                                                                        "class": "",
+                                                                        "extra": {
+                                                                            "dateOfBirth": "",
+                                                                            "place": "",
+                                                                            "status": "",
+                                                                            "profPic": "no_pic"
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
                                                     },
                                                     {
                                                         "name": "newDaughter",

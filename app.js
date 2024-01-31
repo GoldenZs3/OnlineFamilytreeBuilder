@@ -6,9 +6,12 @@ const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
 
-const upload = multer({dest: 'public/uploads/'})
+const upload = multer({dest: 'public/uploads/'}).any();
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+app.use(express.json({limit: '1mb'})); 
+
 
 app.get('/', (request, response)=> {
   readFile('./home.html', 'utf8', (err, html) => {
@@ -34,21 +37,30 @@ app.get('/trees', (request, response) =>{
     response.send(html);
   })
 });
+app.get('/private', (request, response)=> {
+  readFile('./private.html', 'utf8', (err, html) => {
+    if (err) {
+      response.status(500).send("error")
+    }
+    response.send(html);
+  })
+});
 app.post('/updateFamilyTree', (req, res) => {
+  console.log(req.body);
     const familyTree = req.body;
     fs.writeFileSync('public/data/data.json', JSON.stringify(familyTree,"", 4));
     res.send(JSON.stringify({ success: true, familyTree }));
   });
-  app.post('/addRelation', upload.single('profilePicture'), (req, res) => {
+  app.post('/addRelation', upload, (req, res) => {
     const { file, relationName, r, action } = req.body; // file here is a text field
     const relation=JSON.parse(req.body.relation);
-    const profilePicture = req.file; // profilePicture is the uploaded file
-    try{
+    const profilePicture = req.files.find(file => file.fieldname == 'profilePicture'); // profilePicture is the uploaded file
+    if (profilePicture) {
       relation.extra['profPic'] = profilePicture.filename;
-    }
-    catch{
+  } else {
       relation.extra['profPic'] = "no_pic";
-    }
+  }
+    console.log(relation.extra['profPic']);
     
 
   // Function to recursively search for the parent in the family tree
@@ -187,7 +199,14 @@ fs.readFile(`public/data/${file}`, 'utf8', (err, data) => {
   }}
   else if (action === "oldest")
   {
+    if (file.startsWith("private")){
+      pass=familyTree[0];
+      familyTree=[familyTree[1]];
+    }
     familyTree=addNewRoot(familyTree)
+    if (file.startsWith("private")){
+      familyTree= [pass, familyTree[0]];
+    }
     if (addNewRoot(familyTree)) {
       fs.writeFileSync(`public/data/${file}`, JSON.stringify(familyTree,"", 4));
       res.send(JSON.stringify({ success: true, familyTree }));
@@ -208,9 +227,16 @@ fs.readFile(`public/data/${file}`, 'utf8', (err, data) => {
 });
 });
 
-app.post('/addNewTree', (req,res) => {
+app.post('/addNewTree', upload, (req,res) => {
+  console.log(req.body);
   const privacy= req.body.privacy;
-  const relation = req.body.relation;
+  const relation = JSON.parse(req.body.relation);
+  const profilePicture = req.files.find(file => file.fieldname == 'profilePicture'); // profilePicture is the uploaded file
+    if (profilePicture) {
+      relation.extra['profPic'] = profilePicture.filename;
+  } else {
+      relation.extra['profPic'] = "no_pic";
+  }
   if (privacy=="public"){
     const filename = `public/data/${relation.name}_data.json`;
     fs.writeFile(filename, JSON.stringify([relation], null, 4), (err) => {
@@ -238,6 +264,25 @@ app.post('/addNewTree', (req,res) => {
   
 });
 
+app.post("/accessTree", (req, res)=>{
+  console.log("here");
+  console.log(req.body);
+  const treeName = req.body.treeName;
+  console.log(treeName);
+  const passphrase = req.body.passphrase;
+  fileName = treeName + "_data.json";
+  console.log(fileName);
+  const treeData = readTreeData(fileName, folder="private");
+  let matched=false;
+  if(treeData[0]==passphrase){
+    matched=true;
+  }
+  if (matched){
+    
+    console.log("Matched pass and tree");
+    res.send({ success: true, fileName });
+  }
+});
 
 app.get('/listOfTrees', (req, res) => {
   fs.readdir('public/data', (err, files) => {
@@ -260,18 +305,29 @@ app.get('/listOfTrees', (req, res) => {
 app.get('/treePage', (req, res) => {
   try {
       // Retrieve the tree parameter from the query string
+      console.log(req.query);
       const treeParam = req.query.tree;
       console.log(treeParam);
+      const folder=req.query.folder;
+      console.log(folder);
 
+      let file_path=""
       // Read the tree data synchronously
-      const treeData = readTreeData(treeParam);
+      let treeData = readTreeData(treeParam, folder);
+      if(folder=="private"){
+        treeData=[treeData[1]];
+        file_path="private/"
+      }
+      file_path=file_path+treeParam;
+      console.log(treeData);
+
 
       // Read the content of treePage.html synchronously
       const html = fs.readFileSync(path.join(__dirname, 'treePage.html'), 'utf8');
 
       // Replace placeholder in the HTML with the actual tree data
       const modifiedHtml = html.replace('/* Tree data placeholder */', JSON.stringify(treeData));
-      const newHtml = modifiedHtml.replace('/* Tree data json placeholder */', JSON.stringify(treeParam));
+      const newHtml = modifiedHtml.replace('/* Tree data json placeholder */', JSON.stringify(file_path));
       // Send the modified HTML as the response
       res.send(newHtml);
   } catch (err) {
@@ -282,20 +338,35 @@ app.get('/treePage', (req, res) => {
 });
 
 
+
 // Function to read tree data based on the filename
-function readTreeData(filename) {
+function readTreeData(filename, folder="public") {
   // Implement this function based on your file storage/retrieval mechanism
   // For example, you might read the JSON file from a specific directory
   // and parse it to retrieve the tree data
-  const filePath = path.join(__dirname, 'public', 'data', filename);
-
-  try {
+  console.log(folder);
+  console.log(folder=="private");
+  if (folder=="public"){
+    const filePath = path.join(__dirname, 'public', 'data', filename);
+    try {
       // Read the JSON data from the file synchronously
       const data = fs.readFileSync(filePath, 'utf8');
       // Parse JSON data
       return JSON.parse(data);
   } catch (err) {
       throw err;
+  }
+  }
+  else if(folder=="private"){
+    const filePath = path.join(__dirname, 'public', 'data', 'private', filename);
+    try {
+      // Read the JSON data from the file synchronously
+      const data = fs.readFileSync(filePath, 'utf8');
+      // Parse JSON data
+      return JSON.parse(data);
+  } catch (err) {
+      throw err;
+  }
   }
 }
 
