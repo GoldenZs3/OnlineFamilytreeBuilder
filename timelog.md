@@ -248,3 +248,12 @@
 
 ### 31 Jan 2024:
 * *1.5 hours* Playing around with front end
+
+### 1 Feb 2024:
+* *3 hours* Running initial pilot testings
+
+### 2 Feb 2024:
+* *2 hours* implementing some design flaws caught in pilot tests
+
+## Week 19
+* *2 hours* Finishing touches on the implementation flaws caught, updating home page

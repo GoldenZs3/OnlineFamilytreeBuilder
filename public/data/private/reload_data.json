@@ -1,7 +1,7 @@
 [
-    "newPrivate",
+    "reload",
     {
-        "name": "new",
+        "name": "testReload",
         "class": "",
         "extra": {
             "dateOfBirth": "",

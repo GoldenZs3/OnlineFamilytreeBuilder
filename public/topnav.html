@@ -46,17 +46,20 @@
         color: black;
     }
 
-    /* Style the user guide div */
     #userGuide {
-        position: fixed;
-        top: 60px; /* Adjust the top position based on your header height */
-        right: 0;
-        width: 300px;
-        padding: 20px;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+    position: fixed;
+    top: 60px;
+    right: 0;
+    width: 300px;
+    max-height: calc(100vh - 60px); /* Set max height based on viewport height minus header height */
+    overflow-y: auto; /* Add this line to enable vertical scrolling if needed */
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
 </style>
 
 <body>
@@ -86,7 +89,27 @@
                   as you will need it to access your tree!</b>
                 <h4>Access a private tree</h4>
                 If on the previous page you decided to make a private tree, it is on this page you can gain access to it.
-                Simply enter the tree name and passphrase you created for the tree and hit submit.
+                Simply enter the tree name and passphrase you created for the tree and hit submit.<br>
+                <br>
+                <h4>What can you do to a tree?</h4>
+                <li>
+                  <b>New Child: </b> Add a new child to an existing member. Due to visualization limitations, you can
+                  only add a child to the direct member of the tree (ie. the left-side member of a marriage if the member has a spouse).
+                  Just add the name of the parent into the parent name field and then fill the child's information in.
+                </li>
+                <li>
+                  <b>New Partner/Spouse: </b> Add a partner to an existing member of the tree. Just fill in the member's name in the 
+                  partner field, and then add all the information of the partner in.
+                </li>
+                <li>
+                  <b>New oldest ancestor: </b> The oldest ancestor of a tree is the one furthest up on the tree. If you want to add their
+                  parents, just add a new oldest ancestor. Add the new parent's information into the appropriate fields. No need to fill in the
+                  parent/partner field.
+                </li>
+                <li>
+                  <b> Delete a member: </b> If you made a mistake and want to get rid of a member, you can do so by deleting the member.
+                  Just add the person's name that you want to delete from the tree into the New person name field and hit submit.
+                </li>
               </p>
           </div>
       </div>

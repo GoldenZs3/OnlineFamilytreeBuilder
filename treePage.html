@@ -241,17 +241,6 @@
                 alert('Right-click: ' + name);
             },
             textRenderer: function(name, extra, textClass) {
-                if (extra){
-                    if(extra.dateOfBirth){
-                        name = name + "<br>"+extra.dateOfBirth;
-                    }
-                    if(extra.place){
-                        name = name + "<br>"+extra.place;
-                    }
-                    if(extra.status){
-                        name = name + "<br>"+extra.status;
-                    }
-                }
                 return "<p align='center' class='" + textClass + "'>" + name + "</p>";
             },
             marriageClick: function(extra, id) {

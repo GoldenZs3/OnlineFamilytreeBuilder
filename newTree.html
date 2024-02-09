@@ -120,7 +120,7 @@
     formData.append('passphrase', inputPass);
     formData.append('relation', JSON.stringify({name: inputName, class: inputClass, extra: {dateOfBirth: inputDate, place: inputPlace, status: inputStatus}}));
     formData.append('profilePicture', profilePicture); // Append the file
-    
+    console.log(inputName);
     fetch("/addNewTree", {
         method: 'POST',
         body: formData,
@@ -135,6 +135,7 @@
                 setTimeout(function() {
                     document.getElementById('successMessage').style.display = 'none';
                 }, 3000);
+        window.location.href = `/treePage?tree=${inputName}_data.json&folder=${inputPrivacy}`;
 })
     .catch((error) => console.error('Error:', error));
 });
