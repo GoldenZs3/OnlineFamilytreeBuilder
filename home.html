@@ -9,7 +9,7 @@
 		margin: 0;
 	}
 	#home{
-		margin: 20px;
+		padding: 20px;
 	}
 	.topnav a.active {
   	background-color: white;
@@ -81,21 +81,30 @@
 	}
 	#graph_home{
 		height: 350px;
+		margin-top:15px;
+		margin-bottom: 15px;
 		display:flex;
 		justify-content: center;
+		
 	}
 	#treesContainer div{
 		height: 200px;
+		border: 2px solid black;
 	}
 	#nav-placeholder{
 		margin:0;
-		padding-bottom: 50px;
 	}
 	svg{
-		width: 80%;
+		width: 90%;
+		border: 2px solid black;
+		border-radius: 10px;
 	}
 	#warning{
-		color: red;
+		background-color: red;
+		color: whitesmoke;
+		border-radius: 10px;
+		border:#000;
+		border: 3px solid black;
 	}
 	#nodeInfo {
     background-color: rgb(174, 243, 174);
@@ -120,6 +129,13 @@
 }
 .nodeText{
     font: 20px;
+}
+#homeText{
+	font: 20px sans-serif;
+	background: rgb(188, 248, 188);
+	padding-left:3px;
+	border: 1px solid black;
+	border-radius: 10px;
 }
 </style>
 
@@ -148,7 +164,7 @@
 	To start a new tree navigate to Start a new tree. To look at existing public trees visit Trees page. <br>
 	For a more in-depth explanation, please make use of the user guide.<br><br>
 	This website was created as part of my level 4 Individual Project. With any questions, please feel
-	free to reach out to me at: 2555709J@student.gla.ac.uk</div>
+	free to reach out to me at: <br> Zsofia Jakab <br>2555709J@student.gla.ac.uk</div>
 	</div>
     <script src='public/index.js'></script>
 </body>

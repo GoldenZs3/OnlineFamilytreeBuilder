@@ -256,4 +256,24 @@
 * *2 hours* implementing some design flaws caught in pilot tests
 
 ## Week 19
+### 6 Feb 2024:
+* *1 hour* Making a start at the dissertation write up
+
+### 9 Feb 2024:
 * *2 hours* Finishing touches on the implementation flaws caught, updating home page
+* *2 hours* Starting writing up the survey
+
+### 10 Feb 2024:
+* *1.5 hours* Finishing survey questions
+* *1 hour* Slight touch ups
+
+## Week 20
+### 12 Feb 2024:
+* *1.5 hour* Finishing touches on survey questions
+
+### 14 Feb 2024:
+* *2 hours* Bug fixing
+
+## Week 21
+### 19 Feb 2024:
+* *1.5 hours* Last few bug fixes

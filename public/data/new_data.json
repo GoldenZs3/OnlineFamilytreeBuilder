@@ -1,15 +1,15 @@
 [
     {
-        "name": "new",
+        "name": "Bethany",
         "marriages": [
             {
                 "spouse": {
-                    "name": "newMarriage",
-                    "class": "woman"
+                    "name": "Evan",
+                    "class": "man"
                 },
                 "children": [
                     {
-                        "name": "newChild",
+                        "name": "Donald",
                         "class": "man",
                         "extra": {
                             "dateOfBirth": "",

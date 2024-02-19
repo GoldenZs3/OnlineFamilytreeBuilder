@@ -53,15 +53,15 @@
                                                 "spouse": {},
                                                 "children": [
                                                     {
-                                                        "name": "new",
+                                                        "name": "Joaline",
                                                         "class": "woman"
                                                     },
                                                     {
-                                                        "name": "name",
+                                                        "name": "Jonas",
                                                         "class": "man"
                                                     },
                                                     {
-                                                        "name": "test",
+                                                        "name": "Jared",
                                                         "class": "man",
                                                         "extra": {
                                                             "dateOfBirth": "",
@@ -71,7 +71,7 @@
                                                         }
                                                     },
                                                     {
-                                                        "name": "new",
+                                                        "name": "Jamie",
                                                         "class": "",
                                                         "extra": {
                                                             "dateOfBirth": "",
@@ -90,19 +90,19 @@
                                         "marriages": [
                                             {
                                                 "spouse": {
-                                                    "name": "newSpouse",
+                                                    "name": "Ash",
                                                     "class": "other"
                                                 },
                                                 "children": [
                                                     {
-                                                        "name": "newChild",
+                                                        "name": "Oakley",
                                                         "class": "man",
                                                         "marriages": [
                                                             {
                                                                 "spouse": {},
                                                                 "children": [
                                                                     {
-                                                                        "name": "name",
+                                                                        "name": "Brady",
                                                                         "class": "",
                                                                         "extra": {
                                                                             "dateOfBirth": "",
@@ -116,7 +116,7 @@
                                                         ]
                                                     },
                                                     {
-                                                        "name": "newDaughter",
+                                                        "name": "Sam",
                                                         "class": "woman"
                                                     }
                                                 ]
@@ -129,12 +129,12 @@
                                         "marriages": [
                                             {
                                                 "spouse": {
-                                                    "name": "marriage",
+                                                    "name": "Jonah",
                                                     "class": "man"
                                                 },
                                                 "children": [
                                                     {
-                                                        "name": "name",
+                                                        "name": "Kaylee",
                                                         "class": "woman"
                                                     }
                                                 ]

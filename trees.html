@@ -85,9 +85,12 @@
 	}
 	svg{
 		height: 350px;
-		width: 80%;
+		width: 90%;
 		border-bottom: 5px;
 		align-self: center;
+		border: 2px solid black;
+		border-radius: 10px;
+		margin-bottom:15px;
 	}
 	#warning{
 		color: red;
@@ -130,17 +133,6 @@
                 alert('Right-click: ' + name);
             },
             textRenderer: function(name, extra, textClass) {
-                if (extra){
-                    if(extra.dateOfBirth){
-                        name = name + "<br>"+extra.dateOfBirth;
-                    }
-                    if(extra.place){
-                        name = name + "<br>"+extra.place;
-                    }
-                    if(extra.status){
-                        name = name + "<br>"+extra.status;
-                    }
-                }
                 return "<p align='center' class='" + textClass + "'>" + name + "</p>";
             },
             marriageClick: function(extra, id) {

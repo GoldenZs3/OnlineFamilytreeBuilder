@@ -11,7 +11,11 @@
     .new_tree_form{
         display: flex;
         justify-content: center;
-        width: 90%;
+        background: rgb(195, 255, 195);
+	padding-left:3px;
+	border: 1px solid black;
+	border-radius: 20px;
+    margin: 10px;
     }
     form{
         margin: 20px;
@@ -25,7 +29,7 @@
     }
     input[type="submit"]{
         background-color: rgb(74, 158, 74);
-        border-radius: 5px;
+        border-radius: 10px;
         font-size: 20px;
         color: white;
         border-width: 1px;
@@ -36,6 +40,11 @@
         background-color: lightgreen;
         color: black;
     }
+    #star{
+        display:inline;
+        color: red;
+        font-size: 20px;
+    }
 </style>
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -44,24 +53,24 @@
     <div id="successMessage" style="display:none; justify-content: center; color: green; margin: 10px;">Tree added successfully!</div>
     <div class="new_tree_form">
         <form action="/addTree" method="post" id="newTreeForm" >
-            <label for="privacy">Would you like your tree to be visible for anyone, or be private?</label><br>
+            <label for="privacy">Would you like your tree to be visible for anyone, or be private?<div id="star">*</div></label><br>
             <input type="radio" id="public" name="privacy" value="public" onclick="hideInputs()">
              <label for="public">Visible for anyone</label><br>
              <input type="radio" id="private" name="privacy" value="private" onclick="showInputs()">
              <label for="private">Private</label><br><br>
              <div id="inputs" style="display:none;">
-                 <label for="privateTreeName">Give the tree a name (You will need this to access the tree): </label><br>
+                 <label for="privateTreeName">Give the tree a name (You will need this to access the tree): <p id="star">*</p></label><br>
                  <input type="text" id="privateTreeName" name="privateTreeName"><br><br>
-                 <label for="privateTreePass">Give the tree a passphrase (You will need this to access the tree):</label><br>
+                 <label for="privateTreePass">Give the tree a passphrase (You will need this to access the tree): <p id="star">*</p></label><br>
                  <input type="text" id="privateTreePass" name="privateTreePass"><br><br>
              </div>
-            <label for="newTreeName">New person name:</label><br>
+            <label for="newTreeName">New person name: <p id="star">*</p></label><br>
             <input type="text" id="newTreeName" name="newTreeName"><br><br>
             <label for="newTreedateOfBirth">New person's date of birth:</label><br>
             <input type="text" id="newTreedateOfBirth" name="newTreedateOfBirth"><br><br>
             <label for="newTreeplace">New person's place of birth/associated country, city or town:</label><br>
             <input type="text" id="newTreeplace" name="newTreeplace"><br><br>
-            <label for="class">Gender:</label><br>
+            <label for="class">Gender: <p id="star">*</p></label><br>
             <input type="radio" id="man" name="gender" value="man">
              <label for="man">Man</label><br>
             <input type="radio" id="woman" name="gender" value="woman">

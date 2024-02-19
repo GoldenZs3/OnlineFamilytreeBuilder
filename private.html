@@ -13,7 +13,12 @@
     #privateForm{
         display: flex;
         justify-content: center;
-        width: 90%;
+        background: rgb(195, 255, 195);
+	padding-left:3px;
+	border: 1px solid black;
+	border-radius: 20px;
+    margin: 10px;
+    font-size:17px;
     }
     form{
         margin: 20px;
@@ -27,7 +32,7 @@
     }
     input[type="submit"]{
         background-color: rgb(74, 158, 74);
-        border-radius: 5px;
+        border-radius: 10px;
         font-size: 20px;
         color: white;
         border-width: 1px;
@@ -37,6 +42,11 @@
     input[type="submit"]:hover{
         background-color: lightgreen;
         color: black;
+    }
+    #star{
+        display:inline;
+        color: red;
+        font-size: 20px;
     }
     
 </style>
@@ -49,9 +59,9 @@
 <div id="title"><h1>Access a private tree</h1></div>
 <div id="privateForm">
     <form id="accessTreeForm" >
-        <label for="privateTreeName">Provide your tree name: (You would have created this when starting your tree)</label><br>
+        <label for="privateTreeName">Provide your tree name: (You would have created this when starting your tree) <p id="star">*</p></label><br>
         <input type="text" id="privateTreeName" name="privateTreeName" required><br><br>
-        <label for="privateTreePass">Provide your passphrase for the tree:</label><br>
+        <label for="privateTreePass">Provide your passphrase for the tree: <p id="star">*</p></label><br>
         <input type="text" id="privateTreePass" name="privateTreePass" required><br><br>
         <input type="submit" value="Submit">
     </form>

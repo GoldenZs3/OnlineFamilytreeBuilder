@@ -1,6 +1,6 @@
 [
     {
-        "name": "old",
+        "name": "Jeremy",
         "class": "",
         "textClass": "emphasis",
         "marriages": [
@@ -8,11 +8,11 @@
                 "spouse": {},
                 "children": [
                     {
-                        "name": "name",
+                        "name": "Megan",
                         "marriages": [
                             {
                                 "spouse": {
-                                    "name": "new",
+                                    "name": "Skyler",
                                     "class": "",
                                     "extra": {
                                         "dateOfBirth": "",
