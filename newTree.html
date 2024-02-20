@@ -144,7 +144,15 @@
                 setTimeout(function() {
                     document.getElementById('successMessage').style.display = 'none';
                 }, 3000);
-        window.location.href = `/treePage?tree=${inputName}_data.json&folder=${inputPrivacy}`;
+                if(inputPrivacy=="public"){
+                    console.log("here");
+                    window.location.href = `/treePage?tree=${inputName}_data.json&folder=${inputPrivacy}`;
+                }
+                if(inputPrivacy=="private"){
+                    console.log("here");
+                    window.location.href = `/treePage?tree=${inputPrivateName}_data.json&folder=${inputPrivacy}`;
+                }
+       
 })
     .catch((error) => console.error('Error:', error));
 });
