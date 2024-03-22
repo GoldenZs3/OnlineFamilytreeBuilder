@@ -1,0 +1,141 @@
+body {
+    font: 15px sans-serif;
+    border: 0;
+    margin: 0;
+}
+.topnav a.active {
+  background-color: white;
+  color: green;
+}
+h1{
+    font-size: 3em;
+}
+path{
+    stroke-width: 2.5px;
+}
+#title{
+    display:flex;
+    justify-content: center;
+}
+.linage {
+    fill: none;
+    stroke: #000;
+    height: 200px;
+}
+.marriage {
+    fill: none;
+    stroke: black;
+}
+.marriageNode {
+        background-color: black;
+        border-radius: 50%;
+}
+.man {
+    background-color: lightgreen;
+        border-style: solid;
+        border-width: 1px;
+        box-sizing: border-box;
+    border-radius: 15px;
+}
+.woman {
+        background-color: lightgreen;
+        border-style: solid;
+        border-width: 1px;
+        box-sizing: border-box;
+        border-radius: 15px;
+}
+.other{
+    background-color: lightgreen;
+        border-style: solid;
+        border-width: 1px;
+        box-sizing: border-box;
+        border-radius: 15px;
+}
+.node {
+    background-color: lightgreen;
+        border-style: solid;
+        border-width: 1px;
+        box-sizing: border-box;
+        border-radius: 15px;
+}
+.emphasis{
+        font-style: italic;
+}
+.nodeText{
+    font-size: 13px;
+}
+.foreignObject{
+    height: 16px;
+}
+p {
+    padding:0;
+    margin:0;
+}
+#nav-placeholder{
+    margin:0;
+    padding-bottom: 50px;
+}
+svg{
+    height: 350px;
+    width: 90%;
+    border-bottom: 5px;
+    align-self: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-bottom:15px;
+}
+form{
+    margin: 20px;
+    width: 75%;
+}
+input[type="text"]{
+    width: 100%;
+    height:25px;
+    border-radius: 5px;
+    border-color: green;
+}
+input[type="submit"]{
+    background-color: rgb(74, 158, 74);
+    border-radius: 10px;
+    font-size: 20px;
+    color: white;
+    border-width: 1px;
+    width: 100%;
+    height: 30px;
+}
+input[type="submit"]:hover{
+    background-color: lightgreen;
+    color: black;
+}
+#nodeInfo {
+    background-color: rgb(174, 243, 174);
+    border: 1px solid #ccc;
+    width: 300px; 
+    padding: 10px; /* Padding around the content */
+    top: 50px; /* Position from the top */
+    right: 50px; /* Position from the right */
+    z-index: 1000; /* Make sure it's on top of other elements */
+    display: none; /* Hide it by default */
+	border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#nodeInfo #closeButtonContainer {
+    text-align:right;
+	margin:0;
+}
+#nodeInfo #closeButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+#nodeInfo img{
+    margin-left: 75px;
+    margin-top:0%;
+}
+#star{
+    display:inline;
+    color: red;
+    font-size: 20px;
+}

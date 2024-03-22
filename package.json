@@ -11,6 +11,14 @@
     "type": "git",
     "url": "git+https://github.com/GoldenZs3/OnlineFamilytreeBuilder.git"
   },
+    "jest": {
+      "transform": {
+        "^.+\\.jsx?$": "babel-jest"
+      },
+      "transformIgnorePatterns": [
+        "/node_modules/(?!chai)/"
+      ]
+    },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -27,6 +35,10 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "babel-jest": "^29.7.0",
     "gh-pages": "^6.1.0"
   }
 }
+

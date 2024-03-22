@@ -45,14 +45,9 @@ app.get('/private', (request, response)=> {
     response.send(html);
   })
 });
-app.post('/updateFamilyTree', (req, res) => {
-  console.log(req.body);
-    const familyTree = req.body;
-    fs.writeFileSync('public/data/data.json', JSON.stringify(familyTree,"", 4));
-    res.send(JSON.stringify({ success: true, familyTree }));
-  });
+
   app.post('/addRelation', upload, (req, res) => {
-    const { file, relationName, r, action } = req.body; // file here is a text field
+    const { file, relationName, r, action } = req.body;
     const relation=JSON.parse(req.body.relation);
     const profilePicture = req.files.find(file => file.fieldname == 'profilePicture'); // profilePicture is the uploaded file
     if (profilePicture) {
@@ -135,11 +130,12 @@ function addNewRoot(tree){
 }
 
 function deleteNode(tree) {
+  let oldest=tree[0];
   for (let i = 0; i < tree.length; i++) {
       let member = tree[i];
       if (member.name === relation.name) {
           // If the member has marriages and children, add the children to the tree
-          if (member.marriages) {
+          if (member==oldest && member.marriages) {
               for (let marriage of member.marriages) {
                   if (marriage.children) {
                       tree.push(...marriage.children);
@@ -265,7 +261,6 @@ app.post('/addNewTree', upload, (req,res) => {
 });
 
 app.post("/accessTree", (req, res)=>{
-  console.log("here");
   console.log(req.body);
   const treeName = req.body.treeName;
   console.log(treeName);
@@ -341,9 +336,6 @@ app.get('/treePage', (req, res) => {
 
 // Function to read tree data based on the filename
 function readTreeData(filename, folder="public") {
-  // Implement this function based on your file storage/retrieval mechanism
-  // For example, you might read the JSON file from a specific directory
-  // and parse it to retrieve the tree data
   console.log(folder);
   console.log(folder=="private");
   if (folder=="public"){
@@ -372,7 +364,7 @@ function readTreeData(filename, folder="public") {
 
 
 
-
+module.exports = app;
 
 app.use("/public", express.static('./public/'));
 app.listen(process.env.PORT || 8000, () => console.log('App available on http://localhost:8000'))

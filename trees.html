@@ -1,101 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8">
-<style type="text/css">
-	body {
-	    font: 15px sans-serif;
-		border: 0;
-		margin: 0;
-	}
-	.topnav a.active {
-  	background-color: white;
-  	color: green;
-	}
-	h1{
-		font-size: 3em;
-	}
-	path{
-		stroke-width: 2.5px;
-	}
-	#title{
-		display:flex;
-		justify-content: center;
-	}
-	.linage {
-	    fill: none;
-	    stroke: #000;
-		height: 200px;
-	}
-	.marriage {
-	    fill: none;
-	    stroke: black;
-	}
-	.marriageNode {
-			background-color: black;
-			border-radius: 50%;
-	}
-	.man {
-	    background-color: lightgreen;
-			border-style: solid;
-			border-width: 1px;
-			box-sizing: border-box;
-		border-radius: 15px;
-	}
-	.woman {
-			background-color: lightgreen;
-			border-style: solid;
-			border-width: 1px;
-			box-sizing: border-box;
-			border-radius: 15px;
-	}
-	.other{
-		background-color: lightgreen;
-			border-style: solid;
-			border-width: 1px;
-			box-sizing: border-box;
-			border-radius: 15px;
-	}
-	.node {
-		background-color: lightgreen;
-			border-style: solid;
-			border-width: 1px;
-			box-sizing: border-box;
-			border-radius: 15px;
-	}
-	.emphasis{
-			font-style: italic;
-	}
-	.nodeText{
-		font-size: 13px;
-	}
-	.foreignObject{
-		height: 16px;
-	}
-	p {
-		padding:0;
-		margin:0;
-	}
-	#treesContainer div{
-		display:flex;
-		flex-direction: column;
-		justify-content: center;
-	}
-	#nav-placeholder{
-		padding-bottom: 50px;
-	}
-	svg{
-		height: 350px;
-		width: 90%;
-		border-bottom: 5px;
-		align-self: center;
-		border: 2px solid black;
-		border-radius: 10px;
-		margin-bottom:15px;
-	}
-	#warning{
-		color: red;
-	}
-</style>
+<link rel="stylesheet" href="public/common.css">
+<link rel="stylesheet" href="public/trees.css">
 <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/d3-dtree@2.4.1/dist/dTree.min.js"></script>
@@ -104,51 +11,6 @@
     <div id="nav-placeholder"></div>
 	<div id="title"><h1>Available Trees</h1></div>
     <div id="treesContainer"></div>
-
-    <script>
-        fetch('/listOfTrees')
-            .then(response => response.json())
-            .then(files => {
-            const treesContainer = document.getElementById('treesContainer');
-            files.forEach(file => {
-                const treeContainer = document.createElement('div');
-                treesContainer.appendChild(treeContainer);
-                treeContainer.setAttribute("id", "graph");
-
-                fetch(`public/data/${file}`)
-                    .then(response => response.json())
-                    .then(treeData => {
-                        tree=dTree.init(treeData, {
-                            target: "#graph",
-                            debug: true,
-                            hideMarriageNodes: true,
-                            marriageNodeSize: 5,
-                            height: 600,
-                            width: 1200,
-                            callbacks: {
-                                nodeClick: function (name, extra) {
-                                    window.location.href = `/treePage?tree=${file}`;
-                                },
-            nodeRightClick: function(name, extra) {
-                alert('Right-click: ' + name);
-            },
-            textRenderer: function(name, extra, textClass) {
-                return "<p align='center' class='" + textClass + "'>" + name + "</p>";
-            },
-            marriageClick: function(extra, id) {
-                alert('Clicked marriage node' + id);
-            },
-            marriageRightClick: function(extra, id) {
-                alert('Right-clicked marriage node' + id);
-            },
-        }
-    });
-	tree.zoomTo(0,200,1.5,0);
-                        })
-                        .catch(error => console.error('Error:', error));
-					});
-            })
-            .catch(error => console.error('Error:', error));
-    </script>
-    <script src='public/index.js'></script>
+    <script src='public/common.js'></script>
+	<script src='public/trees.js'></script>
 </body>

@@ -2,142 +2,8 @@
 <html lang="en">
 <meta charset="utf-8">
 
-<style type="text/css">
-	body {
-	    font: 15px sans-serif;
-		border: 0;
-		margin: 0;
-	}
-	#home{
-		padding: 20px;
-	}
-	.topnav a.active {
-  	background-color: white;
-  	color: green;
-	}
-	h1{
-		font-size: 3em;
-	}
-	path{
-		stroke-width: 2.5px;
-	}
-	#title{
-		display:flex;
-		justify-content: center;
-	}
-	.linage {
-	    fill: none;
-	    stroke: #000;
-		height: 200px;
-	}
-	.marriage {
-	    fill: none;
-	    stroke: black;
-	}
-	.marriageNode {
-			background-color: black;
-			border-radius: 50%;
-	}
-	.man {
-	    background-color: lightgreen;
-			border-style: solid;
-			border-width: 1px;
-			box-sizing: border-box;
-		border-radius: 15px;
-	}
-	.woman {
-			background-color: lightgreen;
-			border-style: solid;
-			border-width: 1px;
-			box-sizing: border-box;
-			border-radius: 15px;
-	}
-	.other{
-		background-color: lightgreen;
-			border-style: solid;
-			border-width: 1px;
-			box-sizing: border-box;
-			border-radius: 15px;
-	}
-	.node {
-		background-color: lightgreen;
-			border-style: solid;
-			border-width: 1px;
-			box-sizing: border-box;
-			border-radius: 15px;
-	}
-	.emphasis{
-			font-style: italic;
-	}
-	.nodeText{
-		font-size: 13px;
-	}
-	.foreignObject{
-		height: 16px;
-	}
-	p {
-		padding:0;
-		margin:0;
-	}
-	#graph_home{
-		height: 350px;
-		margin-top:15px;
-		margin-bottom: 15px;
-		display:flex;
-		justify-content: center;
-		
-	}
-	#treesContainer div{
-		height: 200px;
-		border: 2px solid black;
-	}
-	#nav-placeholder{
-		margin:0;
-	}
-	svg{
-		width: 90%;
-		border: 2px solid black;
-		border-radius: 10px;
-	}
-	#warning{
-		background-color: red;
-		color: whitesmoke;
-		border-radius: 10px;
-		border:#000;
-		border: 3px solid black;
-	}
-	#nodeInfo {
-    background-color: rgb(174, 243, 174);
-    border: 1px solid #ccc; /* Grey border */
-    width: 300px; /* Width of the div */
-    padding: 10px; /* Padding around the content */
-    top: 50px; /* Position from the top */
-    right: 50px; /* Position from the right */
-    z-index: 1000; /* Make sure it's on top of other elements */
-    display: none; /* Hide it by default */
-	border-radius: 5px;
-}
-#nodeInfo #closeButtonContainer {
-    text-align: right;
-	margin:0;
-}
-#nodeInfo #closeButton {
-    background-color: #4CAF50; /* Green background to match your theme */
-    color: white; /* White text */
-    border: none; /* No border */
-    cursor: pointer; /* Cursor style */
-}
-.nodeText{
-    font: 20px;
-}
-#homeText{
-	font: 20px sans-serif;
-	background: rgb(188, 248, 188);
-	padding-left:3px;
-	border: 1px solid black;
-	border-radius: 10px;
-}
-</style>
+<link rel="stylesheet" href="public/common.css">
+<link rel="stylesheet" href="public/home.css">
 
 
 <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
@@ -166,6 +32,7 @@
 	This website was created as part of my level 4 Individual Project. With any questions, please feel
 	free to reach out to me at: <br> Zsofia Jakab <br>2555709J@student.gla.ac.uk</div>
 	</div>
-    <script src='public/index.js'></script>
+    <script src='public/home.js'></script>
+	<script src='public/common.js'></script>
 </body>
 </html>

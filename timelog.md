@@ -277,3 +277,22 @@
 ## Week 21
 ### 19 Feb 2024:
 * *1.5 hours* Last few bug fixes
+* *0.5 hour* Meeting with supervisor
+
+## Week 22
+
+* *15 hours* starting dissertation write up
+* *2 hours* running evaluations
+
+## Week 23
+* *17 hours* dissertation write up
+
+## Week 24
+* *1 hour* sending out last of the evaluations
+* *7 hours* dissertation write up
+
+## Week 25
+* *26 hours* dissertation write up
+* *0.5 hour* Updating supervisor on progress made
+* *0.5 hour* Supervisor meeting
+* *2 hours* cleaning up code

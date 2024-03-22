@@ -1,0 +1,28 @@
+#home{
+    padding: 20px;
+}
+#graph_home{
+    height: 350px;
+    margin-top:15px;
+    margin-bottom: 15px;
+    display:flex;
+    justify-content: center;
+    
+}
+#warning{
+    background-color: red;
+    color: whitesmoke;
+    border-radius: 10px;
+    border:#000;
+    border: 3px solid black;
+}
+.nodeText{
+font: 20px;
+}
+#homeText{
+font: 20px sans-serif;
+background: rgb(188, 248, 188);
+padding-left:3px;
+border: 1px solid black;
+border-radius: 10px;
+}

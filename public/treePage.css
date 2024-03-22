@@ -1,0 +1,17 @@
+#tree{
+    display:flex;
+    justify-content: center;
+    height:400px;
+}
+.new_relation_form{
+    display: flex;
+    justify-content: center;
+    background: rgb(195, 255, 195);
+padding-left:3px;
+border: 1px solid black;
+border-radius: 20px;
+margin: 10px;
+}
+#infoContent{
+display:block;
+}

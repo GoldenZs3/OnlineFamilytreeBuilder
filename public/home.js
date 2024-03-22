@@ -1,42 +1,3 @@
-fetch('public/data/data.json')
-    .then(response => response.json())
-    .then(data => {
-        let familyTree = data;
-        function addNameToUndefinedNode(tree) {
-            if (tree.name === "undefined") {
-                // Add a class to the node
-                tree.name = "Unknown Person";
-            }
-        
-            // If the node has marriages, check the spouse and children
-            if (tree.marriages && tree.marriages.length > 0) {
-                for (let marriage of tree.marriages) {
-                    addNameToUndefinedNode(marriage.spouse);
-                    for (let child of marriage.children) {
-                        addNameToUndefinedNode(child);
-                    }
-                }
-            }
-        }
-        
-        // Call the function on your tree
-        addNameToUndefinedNode(familyTree);
-
-        fetch('/updateFamilyTree', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(familyTree),
-        })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch((error) => console.error('Error:', error));
-        
-    })
-    .catch(error => console.error('Error:', error));
-
-
     $.getJSON('public/data/data.json', function(treeData) {
         tree= dTree.init(treeData, {
             target: "#graph_home",
@@ -95,15 +56,3 @@ fetch('public/data/data.json')
         tree.zoomTo(0, 220, zoom = 1.75, duration = 0)
     });
     
-
-
-$(function(){
-    $("#nav-placeholder").load("public/topnav.html");
-  });
-
-  document.getElementById('closeButton').addEventListener('click', function() {
-    // Clear the information from the 'infoContent' div
-    document.getElementById('infoContent').innerHTML = '';
-    // Hide the 'nodeInfo' div
-    document.getElementById('nodeInfo').style.display = 'none';
-});

@@ -1,0 +1,10 @@
+#privateForm{
+    display: flex;
+    justify-content: center;
+    background: rgb(195, 255, 195);
+padding-left:3px;
+border: 1px solid black;
+border-radius: 20px;
+margin: 10px;
+font-size:17px;
+}
